@@ -7,7 +7,7 @@ import {ShowDecisionModelComponent} from './show-decision-model/show-decision-mo
 const routes: Routes = [
 	{ path: '', component:MainComponent},
 	{ path: 'main', component:MainComponent},
-	{ path: 'showDecisionModel'}
+	{ path: 'showDecisionModel', component: ShowDecisionModelComponent}
 ];
 
 @NgModule({
