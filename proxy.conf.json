@@ -1,0 +1,11 @@
+{
+  "/CheapLithium/*": {
+    "target": "http://localhost:8000/",
+    "secure": false,
+    "pathRewrite": {
+      "^/CheapLithium/rest/": "/CheapLithium/rest/"
+    },
+    "changeOrigin": false,
+    "logLevel": "debug"
+  }  
+}
