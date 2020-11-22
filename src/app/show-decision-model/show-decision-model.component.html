@@ -8,10 +8,13 @@
 	<p>{{decisionModel.uuid}}</p>
 	<p>{{decisionModel.name}}</p>
 	<p>{{decisionModel.version}}</p>
+	<p>{{decisionModel.startnode}}</p>
 	
 	<ul class="list-group">
 		<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
-		test
+			<p>{{node.uuid}}</p>
+			<p>{{node.type}}</p>
+			<p>{{node.kbarticle}}</p>
 		</li>	
 	</ul>
 	
