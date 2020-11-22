@@ -11,7 +11,7 @@ import { BackendDecisionModel } from './backend-model/backend-decision-model';
 })
 export class DecisionModelBackendService {
 	
-	private _decisionModelLocation = '/CheapLithium/rest/decisionmodel/';
+	private _decisionModelLocation = '/CheapLithium/rest/getDecisionModel/';
 
 	constructor( private httpClient : HttpClient) { }
 
