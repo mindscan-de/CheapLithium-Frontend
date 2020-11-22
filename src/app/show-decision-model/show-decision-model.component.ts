@@ -21,6 +21,8 @@ export class ShowDecisionModelComponent implements OnInit {
 	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService) { }
 
 	ngOnInit(): void {
+		// @TODO: read uuid from url as parameter
+		
 		this.backendService.getDecisionModel("0518f24f-41a0-4f13-b5f6-94a015b5b04c").subscribe(
 			data => this.onDecisionModelLoaded(data),
 			error => this.onDecisionModelFailed(error)
@@ -31,7 +33,7 @@ export class ShowDecisionModelComponent implements OnInit {
 		this.decisionModel = model;
 	}
 	
-	onDecisionModelFailed(error) : void {
+	onDecisionModelFailed( error:any ) : void {
 		console.log(error);
 	}
 
