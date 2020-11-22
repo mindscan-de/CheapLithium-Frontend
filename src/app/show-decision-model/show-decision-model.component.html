@@ -1,11 +1,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm my-5">
-			<h1 class="display-3 font-weight-normal" align="center">{{ title }}</h1>
+			<h1 class="display-3 font-weight-normal" align="center">Decision Model</h1>
 		</div>
 	</div>
 
-	<p>show-decision-model works!</p>
+	<p>{{decisionModel.uuid}}</p>
+	<p>{{decisionModel.name}}</p>
+	<p>{{decisionModel.version}}</p>
+	
+	<ul class="list-group">
+		<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
+		test
+		</li>	
+	</ul>
 	
 </div>
 
