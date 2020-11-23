@@ -5,10 +5,9 @@
 		</div>
 	</div>
 
-	<p>{{decisionModel.uuid}}</p>
-	<p>{{decisionModel.name}}</p>
-	<p>{{decisionModel.version}}</p>
-	<p>{{decisionModel.startnode}}</p>
+	<h3>{{decisionModel.name}} &mdash; {{decisionModel.version}}</h3>
+	
+	<p>{{decisionModel.description}}</p>
 	
 	<ul class="list-group">
 		<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
