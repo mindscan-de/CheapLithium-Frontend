@@ -16,8 +16,8 @@
 			<p>{{node.type}}</p>
 			<p>{{node.kbarticle}}</p>
 			<ul class="list-grpoup">
-				<li *ngFor="let outcome of node.outcomes | keyvalue " class="list-group-item list-group-item-action">
-					{{outcome.key}} -- {{outcome.value}}
+				<li *ngFor="let nextAction of node.nextActions" class="list-group-item list-group-item-action">
+					{{nextAction.name}} -- {{nextAction.next}} -- {{nextAction.template}}
 				</li>
 			</ul>
 		</li>	
