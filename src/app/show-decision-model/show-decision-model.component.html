@@ -4,23 +4,37 @@
 			<h1 class="display-3 font-weight-normal" align="center">Decision Model</h1>
 		</div>
 	</div>
-
-	<h3>{{decisionModel.name}} &mdash; {{decisionModel.version}}</h3>
 	
-	<p>{{decisionModel.description}}</p>
-	
-	<ul class="list-group">
-		<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
-			<p>{{node.uuid}}</p>
-			<p>{{node.type}}</p>
-			<p>{{node.kbarticle}}</p>
-			<ul class="list-grpoup">
-				<li *ngFor="let nextAction of node.nextActions" class="list-group-item list-group-item-action">
-					{{nextAction.name}} -- {{nextAction.next}} -- {{nextAction.template}}
-				</li>
+	<div class="row">
+		<div class="col-lg my-8">
+			<h3>{{decisionModel.name}} &mdash; {{decisionModel.version}}</h3>
+			
+			<p>{{decisionModel.description}}</p>
+			
+			<div class="btn-toolbar float-right" role="toolbar" >
+				<div class="btn-group mr-2" role="group">
+					<button type="button" class="btn btn-secondary">Create Node</button>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+	<div class="row">
+		<div class="col-lg my-8">
+			<ul class="list-group">
+				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
+					<p>{{node.uuid}}</p>
+					<p>{{node.type}}</p>
+					<p>{{node.kbarticle}}</p>
+					<ul class="list-grpoup">
+						<li *ngFor="let nextAction of node.nextActions" class="list-group-item list-group-item-action">
+							{{nextAction.name}} -- {{nextAction.next}} -- {{nextAction.template}}
+						</li>
+					</ul>
+				</li>	
 			</ul>
-		</li>	
-	</ul>
+		</div>
+	</div>
 	
 </div>
 
