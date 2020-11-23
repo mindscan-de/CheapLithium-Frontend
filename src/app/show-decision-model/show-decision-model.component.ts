@@ -36,5 +36,26 @@ export class ShowDecisionModelComponent implements OnInit {
 	onDecisionModelFailed( error:any ) : void {
 		console.log(error);
 	}
+	
+	
+	onCreateNode():void {
+		// open a modal dialog to ask, what kind of node, (start, end, hit, mit, imp, invoke)
+		// will be attached to current model
+	}
+
+	// maybe this model create function will be transferred	
+	onCreateModel():void {
+		// open a modal dialog to ask for model parameters
+	}
+	
+	onCopyModel():void {
+		// will ask for new version number or different name, and allow to define new description, displayname
+	}
+	
+	onEditModel():void {
+		// will allow to edit the Decision Model
+		// Name, displayname, Description, Version
+	}
+	
 
 }
