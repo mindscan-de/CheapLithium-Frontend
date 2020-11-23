@@ -46,15 +46,19 @@ export class ShowDecisionModelComponent implements OnInit {
 	// maybe this model create function will be transferred	
 	onCreateModel():void {
 		// open a modal dialog to ask for model parameters
+		// then reads new uuid
+		// then redirects to new model
 	}
 	
 	onCopyModel():void {
 		// will ask for new version number or different name, and allow to define new description, displayname
+		// then reads new uuid
+		// then redirects to new model
 	}
 	
 	onEditModel():void {
 		// will allow to edit the Decision Model
-		// Name, displayname, Description, Version
+		// name, displayname, Description, Version
 	}
 	
 
