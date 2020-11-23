@@ -6,21 +6,25 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-lg my-8">
-			<h3>{{decisionModel.name}} &mdash; {{decisionModel.version}}</h3>
+		<div class="col-lg mt-8">
+			<h3>{{decisionModel.displayname}} &mdash; {{decisionModel.version}}</h3>
 			
+			<p>{{decisionModel.name}}</p>
 			<p>{{decisionModel.description}}</p>
 			
 			<div class="btn-toolbar float-right" role="toolbar" >
-				<div class="btn-group mr-2" role="group">
+				<div class="btn-group ml-2" role="group">
 					<button type="button" class="btn btn-secondary">Create Node</button>
+					<!-- <button type="button" class="btn btn-secondary">Create Model</button> -->
+					<button type="button" class="btn btn-secondary">Copy Model</button>
+					<button type="button" class="btn btn-secondary">Edit Model</button>
 				</div>
 			</div>
 		</div>
 	</div>
 			
 	<div class="row">
-		<div class="col-lg my-8">
+		<div class="col-lg mt-1">
 			<ul class="list-group">
 				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
 					<p>{{node.uuid}}</p>
