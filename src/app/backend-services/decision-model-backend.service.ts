@@ -12,8 +12,10 @@ import { BackendModelUUIDResult } from './backend-model/backend-model-uuidresult
 export class DecisionModelBackendService {
 	
 	private _decisionModelLocation          = '/CheapLithium/rest/getDecisionModel/';
+	// TODO: these BackendServices:
 	private _createDecisionModelLocation    = '/CheapLithium/rest/createDecisionModel';
 	private _updateDecisionModelLocation    = '/CheapLithium/rest/updateDecisionModel';
+	private _cloneDecisionModelLocation    = '/CheapLithium/rest/cloneDecisionModel';
 
 	constructor( private httpClient : HttpClient) { }
 
@@ -44,5 +46,20 @@ export class DecisionModelBackendService {
 		formdata.append("version", version);
 
 		return this.httpClient.post<BackendModelUUIDResult>( this._updateDecisionModelLocation, formdata);
+	}
+	
+	cloneDecisionModel(uuid:string, name:string, displayname: string, description:string, version:string) : Observable<BackendModelUUIDResult> {
+		// the model uuid: will be used as a template with these modifications
+		let formdata = new FormData();
+		
+		formdata.append("uuid", uuid);
+		
+		// maybe use copy then edit
+		/*formdata.append("name", name);
+		formdata.append("description", description);
+		formdata.append("displayname", displayname);
+		formdata.append("version", version);*/
+
+		return this.httpClient.post<BackendModelUUIDResult>( this._cloneDecisionModelLocation, formdata);
 	}
 }
