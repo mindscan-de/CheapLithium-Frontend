@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component'
+
 // import the backend serice, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 
@@ -18,7 +22,7 @@ export class ShowDecisionModelComponent implements OnInit {
 	
 	public decisionModel: BackendDecisionModel;
 
-	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService) { }
+	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
 
 	ngOnInit(): void {
 		// @TODO: read uuid from url as parameter
@@ -48,6 +52,13 @@ export class ShowDecisionModelComponent implements OnInit {
 		// open a modal dialog to ask for model parameters
 		// then reads new uuid
 		// then redirects to new model
+		const modalref = this.modalService.open(CreateDecisionModelDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.result.then((result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
 	}
 	
 	onCopyModel():void {
