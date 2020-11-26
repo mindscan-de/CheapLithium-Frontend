@@ -4,9 +4,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 // additional components
-import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component'
+import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component';
+import {CreateDecisionNodeDialogComponent} from './create-decision-node-dialog/create-decision-node-dialog.component';
 import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/copy-decision-model-dialog.component';
 import {EditDecisionModelDialogComponent} from './edit-decision-model-dialog/edit-decision-model-dialog.component';
+
 
 // import the backend serice, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
@@ -48,6 +50,13 @@ export class ShowDecisionModelComponent implements OnInit {
 	onCreateNode():void {
 		// open a modal dialog to ask, what kind of node, (start, end, hit, mit, imp, invoke)
 		// will be attached to current model
+		const modalref = this.modalService.open(CreateDecisionNodeDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.result.then((result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
 	}
 
 	// maybe this model create function will be transferred	
