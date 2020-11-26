@@ -3,7 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+// additional components
 import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component'
+import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/copy-decision-model-dialog.component';
 
 // import the backend serice, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
@@ -65,6 +67,13 @@ export class ShowDecisionModelComponent implements OnInit {
 		// will ask for new version number or different name, and allow to define new description, displayname
 		// then reads new uuid
 		// then redirects to new model
+		const modalref = this.modalService.open(CopyDecisionModelDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+
+		modalref.result.then((result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
 	}
 	
 	onEditModel():void {

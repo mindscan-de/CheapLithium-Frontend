@@ -11,13 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CreateDecisionModelDialogComponent } from './show-decision-model/create-decision-model-dialog/create-decision-model-dialog.component';
+import { CopyDecisionModelDialogComponent } from './show-decision-model/copy-decision-model-dialog/copy-decision-model-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ShowDecisionModelComponent ,
-	CreateDecisionModelDialogComponent
+	CreateDecisionModelDialogComponent,
+	CopyDecisionModelDialogComponent
   ],
   imports: [
     BrowserModule,
