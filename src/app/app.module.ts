@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CreateDecisionModelDialogComponent } from './show-decision-model/create-decision-model-dialog/create-decision-model-dialog.component';
 import { CopyDecisionModelDialogComponent } from './show-decision-model/copy-decision-model-dialog/copy-decision-model-dialog.component';
+import { EditDecisionModelDialogComponent } from './show-decision-model/edit-decision-model-dialog/edit-decision-model-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CopyDecisionModelDialogComponent } from './show-decision-model/copy-dec
     MainComponent,
     ShowDecisionModelComponent ,
 	CreateDecisionModelDialogComponent,
-	CopyDecisionModelDialogComponent
+	CopyDecisionModelDialogComponent,
+	EditDecisionModelDialogComponent
   ],
   imports: [
     BrowserModule,

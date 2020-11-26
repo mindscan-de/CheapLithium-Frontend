@@ -6,6 +6,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 // additional components
 import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component'
 import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/copy-decision-model-dialog.component';
+import {EditDecisionModelDialogComponent} from './edit-decision-model-dialog/edit-decision-model-dialog.component';
 
 // import the backend serice, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
@@ -79,6 +80,14 @@ export class ShowDecisionModelComponent implements OnInit {
 	onEditModel():void {
 		// will allow to edit the Decision Model
 		// name, displayname, Description, Version
+		const modalref = this.modalService.open(EditDecisionModelDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+
+		modalref.result.then((result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
+		
 	}
 	
 
