@@ -26,13 +26,14 @@
 	<div class="row">
 		<div class="col-lg mt-1">
 			<ul class="list-group">
-				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNode(node.uuid)">
+				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item" >
+					<button type="button" class="btn btn-outline-primary float-right" (click)="onClickDecisionNode(node.uuid)">edit</button>
 					<h4>{{node.name}}</h4>
 					<p>{{node.uuid}}</p>
 					<p>{{node.type}}</p>
 					<p>{{node.kbarticle}}</p>
-					<ul class="list-grpoup">
-						<li *ngFor="let nextAction of node.nextActions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(node.uuid,i)">
+					<ul class="list-group">
+						<li *ngFor="let nextAction of node.nextActions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(node.uuid,i)" >
 							{{nextAction.name}} -- {{nextAction.next}} -- {{nextAction.template}}
 						</li>
 					</ul>
