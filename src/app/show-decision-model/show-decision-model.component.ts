@@ -8,7 +8,7 @@ import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog
 import {CreateDecisionNodeDialogComponent} from './create-decision-node-dialog/create-decision-node-dialog.component';
 import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/copy-decision-model-dialog.component';
 import {EditDecisionModelDialogComponent} from './edit-decision-model-dialog/edit-decision-model-dialog.component';
-
+import {EditDecisionNodeDialogComponent} from './edit-decision-node-dialog/edit-decision-node-dialog.component';
 
 // import the backend serice, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
@@ -96,6 +96,19 @@ export class ShowDecisionModelComponent implements OnInit {
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
+		
+	}
+	
+	onClickDecisionNode(uuid:string) : void {
+
+		const modalref = this.modalService.open(EditDecisionNodeDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+
+		modalref.result.then((result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
+		
 		
 	}
 	
