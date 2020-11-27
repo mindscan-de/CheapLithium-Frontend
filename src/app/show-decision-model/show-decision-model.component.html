@@ -32,7 +32,7 @@
 					<p>{{node.type}}</p>
 					<p>{{node.kbarticle}}</p>
 					<ul class="list-grpoup">
-						<li *ngFor="let nextAction of node.nextActions" class="list-group-item list-group-item-action">
+						<li *ngFor="let nextAction of node.nextActions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(node.uuid,i)">
 							{{nextAction.name}} -- {{nextAction.next}} -- {{nextAction.template}}
 						</li>
 					</ul>

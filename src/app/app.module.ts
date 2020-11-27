@@ -15,6 +15,7 @@ import { CopyDecisionModelDialogComponent } from './show-decision-model/copy-dec
 import { EditDecisionModelDialogComponent } from './show-decision-model/edit-decision-model-dialog/edit-decision-model-dialog.component';
 import { CreateDecisionNodeDialogComponent } from './show-decision-model/create-decision-node-dialog/create-decision-node-dialog.component';
 import { EditDecisionNodeDialogComponent } from './show-decision-model/edit-decision-node-dialog/edit-decision-node-dialog.component';
+import { EditDecisionNodeTransitionDialogComponent } from './show-decision-model/edit-decision-node-transition-dialog/edit-decision-node-transition-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditDecisionNodeDialogComponent } from './show-decision-model/edit-deci
 	CopyDecisionModelDialogComponent,
 	EditDecisionModelDialogComponent,
 	CreateDecisionNodeDialogComponent,
-	EditDecisionNodeDialogComponent
+	EditDecisionNodeDialogComponent,
+	EditDecisionNodeTransitionDialogComponent
   ],
   imports: [
     BrowserModule,
