@@ -99,5 +99,10 @@ export class ShowDecisionModelComponent implements OnInit {
 		
 	}
 	
+	/* onDeleteNode(uuid:string) : void {
+		// in the service the node must be deleted
+		// in the service the incomming transitions to the node must be deleted
+	} */
+	
 
 }

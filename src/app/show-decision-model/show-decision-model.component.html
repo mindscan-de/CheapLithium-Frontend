@@ -27,6 +27,7 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
 				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item list-group-item-action">
+					<h4>{{node.name}}</h4>
 					<p>{{node.uuid}}</p>
 					<p>{{node.type}}</p>
 					<p>{{node.kbarticle}}</p>
