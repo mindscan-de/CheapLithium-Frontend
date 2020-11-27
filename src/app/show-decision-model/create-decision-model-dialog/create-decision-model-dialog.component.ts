@@ -26,6 +26,8 @@ export class CreateDecisionModelDialogComponent {
 		
 		console.log( this.dmName  + ";" + this.dmDescription + ";" + this.dmVersion + ";" + this.dmDisplayName )
 		
-		this.activeModal.close('create');
+		var observeable = this.backendService.createDecisionModel( this.dmName, this.dmDisplayName, this.dmDescription, this.dmVersion);
+		
+		this.activeModal.close(observeable);
 	}
 }

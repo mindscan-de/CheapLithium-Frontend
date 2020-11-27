@@ -19,6 +19,7 @@ import { DecisionModelBackendService } from '../backend-services/decision-model-
 
 // use the backendmodel
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
+import { BackendModelUUIDResult } from '../backend-services/backend-model/backend-model-uuidresult';
 
 @Component({
   selector: 'app-show-decision-model',
@@ -63,13 +64,13 @@ export class ShowDecisionModelComponent implements OnInit {
 
 	// maybe this model create function will be transferred	
 	onCreateModel():void {
-		// open a modal dialog to ask for model parameters
-		// then reads new uuid
-		// then redirects to new model
 		const modalref = this.modalService.open(CreateDecisionModelDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
 		
 		modalref.result.then((result) => {
-		  // this.closeResult = `Closed with: ${result}`;
+			result.subscribe(
+				data => this.onUUIDResult(data),
+				error => this.onError(error)
+			)
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
@@ -119,7 +120,14 @@ export class ShowDecisionModelComponent implements OnInit {
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
-		
+	}
+	
+	onUUIDResult(result:BackendModelUUIDResult) : void {
+		console.log(result);
+	}
+	
+	onError(error):void {
+		console.log(error)
 	}
 	
 	/* onDeleteNode(uuid:string) : void {
