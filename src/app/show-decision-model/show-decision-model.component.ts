@@ -27,7 +27,7 @@ import { BackendDecisionModel } from '../backend-services/backend-model/backend-
 })
 export class ShowDecisionModelComponent implements OnInit {
 	
-	public decisionModel: BackendDecisionModel;
+	public decisionModel: BackendDecisionModel = new BackendDecisionModel();
 
 	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
 
