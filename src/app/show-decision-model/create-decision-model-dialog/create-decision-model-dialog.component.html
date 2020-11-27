@@ -5,9 +5,30 @@
   </button>
 </div>
 <div class="modal-body">
-	BODY
-	
-	ASK FOR: name, version, displayname, and description
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Name</span>
+  		</div>
+  		<input type="text" class="form-control" [(ngModel)]="dmName">
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Version</span>
+  		</div>
+  		<input type="text" class="form-control" [(ngModel)]="dmVersion">
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Display Name</span>
+  		</div>
+  		<input type="text" class="form-control" [(ngModel)]="dmDisplayName">
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Description</span>
+  		</div>
+  		<textarea class="form-control" aria-label="With textarea" [(ngModel)]="dmDescription"></textarea>
+	</div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onCreate()">Create</button>
