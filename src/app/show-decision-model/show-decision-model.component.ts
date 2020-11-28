@@ -51,7 +51,6 @@ export class ShowDecisionModelComponent implements OnInit {
 		var newMap = new Map<string, BackendDecisionModelDecisionNode>();
 		
 		model.nodes.forEach( function (node) {
-			console.log(node);
 			newMap.set(node.uuid, node);
 		});
 		
