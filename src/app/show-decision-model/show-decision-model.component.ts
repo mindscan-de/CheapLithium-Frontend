@@ -54,13 +54,18 @@ export class ShowDecisionModelComponent implements OnInit {
 	}
 	
 	
-	onCreateNode():void {
+	onCreateNode(dmuuid:string):void {
 		// open a modal dialog to ask, what kind of node, (start, end, hit, mit, imp, invoke)
 		// will be attached to current model
 		const modalref = this.modalService.open(CreateDecisionNodeDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
 		
+		modalref.componentInstance.setDecisionModelUUID(dmuuid);
+		
 		modalref.result.then((result) => {
-		  // this.closeResult = `Closed with: ${result}`;
+			result.subscribe(
+				data => this.onUUIDResult(data),
+				error => this.onError(error)
+			)
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
