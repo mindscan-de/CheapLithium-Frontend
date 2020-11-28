@@ -33,6 +33,7 @@
 					<p>{{node.uuid}}</p>
 					<p>{{node.type}}</p>
 					<p>{{node.kbarticle}}</p>
+					<button type="button" class="btn btn-outline-warning float-right" (click)="onAddDecisionNodeTransition(decisionModel.uuid ,node)">add</button>
 					<ul class="list-group">
 						<li *ngFor="let nextAction of node.nextactions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(node.uuid,i)" >
 							{{nextAction.name}} -- {{nextAction.next}} -- {{nextAction.template}}

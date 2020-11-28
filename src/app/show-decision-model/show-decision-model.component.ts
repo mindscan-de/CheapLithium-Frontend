@@ -138,6 +138,10 @@ export class ShowDecisionModelComponent implements OnInit {
 		);
 	}
 	
+	onAddDecisionNodeTransition(dmuuid: string, decisionNode ) : void {
+		
+	}
+	
 	onUUIDResult(result:BackendModelUUIDResult) : void {
 		console.log(result);
 		// either redirect via parameter or update current model, but via parameter (activatedroute) is better, because the browsers back button can be used.
