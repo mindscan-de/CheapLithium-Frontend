@@ -20,6 +20,7 @@ import { DecisionModelBackendService } from '../backend-services/decision-model-
 // use the backendmodel
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
 import { BackendModelUUIDResult } from '../backend-services/backend-model/backend-model-uuidresult';
+import { BackendDecisionModelDecisionNode } from '../backend-services/backend-model/backend-decision-model-decision-node';
 
 @Component({
   selector: 'app-show-decision-model',
@@ -29,6 +30,7 @@ import { BackendModelUUIDResult } from '../backend-services/backend-model/backen
 export class ShowDecisionModelComponent implements OnInit {
 	
 	public decisionModel: BackendDecisionModel = new BackendDecisionModel();
+	public decisionNodeMap: Map<string,BackendDecisionModelDecisionNode> = new Map();
 
 	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
 
@@ -46,6 +48,14 @@ export class ShowDecisionModelComponent implements OnInit {
 	}
 	
 	onDecisionModelLoaded( model:BackendDecisionModel ): void {
+		var newMap = new Map<string, BackendDecisionModelDecisionNode>();
+		
+		model.nodes.forEach( function (node) {
+			console.log(node);
+			newMap.set(node.uuid, node);
+		});
+		
+		this.decisionNodeMap = newMap;
 		this.decisionModel = model;
 	}
 	
