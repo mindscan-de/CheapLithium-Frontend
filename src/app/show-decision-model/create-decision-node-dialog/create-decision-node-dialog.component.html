@@ -5,12 +5,26 @@
   </button>
 </div>
 <div class="modal-body">
-	BODY
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Name</span>
+  		</div>
+  		<input type="text" class="form-control" [(ngModel)]="dnName">
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Type</span>
+  		</div>
+  		<select class="custom-select" [(ngModel)]="dnType">
+	  		<option value="start">Start</option>
+	  		<option value="end">End</option>
+	  		<option value="hit">Human Task</option>
+	  		<option value="mit">Machine Task</option>
+	  		<!-- INVOKE AND IMPLICATION -->
+  		</select>
+	</div>
 	
-	ASK FOR: Node parameters 
-	TYPE = HIT / MIT / END / START / INVOKE / IMPLICATION
-	KB REFERENCE
-	FOLLOWNODES?
+	<!-- TODO: KB REFERENCE -->
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onCreate()">Create</button>

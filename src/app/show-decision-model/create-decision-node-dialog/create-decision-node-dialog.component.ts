@@ -14,13 +14,22 @@ import { BackendModelUUIDResult } from '../../backend-services/backend-model/bac
   styleUrls: ['./create-decision-node-dialog.component.css']
 })
 export class CreateDecisionNodeDialogComponent  {
+	
+	public dmuuid: string = "";
+	public dnName: string = "";
+	public dnType: string = "hit";
+	public dnKBArticle: string = "";
 
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
+	
+	setDecisionModelUUID(dmuuid : string) : void {
+		this.dmuuid = dmuuid;
+	}
 
 	onCreate() : void {
-		// Maybe we should pass an observable to the model back, with the BackendModelUUIDResult
+		var observeable = this.backendService.createDecisionNodeForModel(this.dnName, this.dnType, this.dnKBArticle, this.dmuuid) 
 		
-		this.activeModal.close('create');
+		this.activeModal.close(observeable);
 	}
 
 }
