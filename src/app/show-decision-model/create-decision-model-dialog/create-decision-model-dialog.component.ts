@@ -22,10 +22,6 @@ export class CreateDecisionModelDialogComponent {
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
 	
 	onCreate() : void {
-		// Maybe we should pass an observable to the model back, with the BackendModelUUIDResult
-		
-		console.log( this.dmName  + ";" + this.dmDescription + ";" + this.dmVersion + ";" + this.dmDisplayName )
-		
 		var observeable = this.backendService.createDecisionModel( this.dmName, this.dmDisplayName, this.dmDescription, this.dmVersion);
 		
 		this.activeModal.close(observeable);
