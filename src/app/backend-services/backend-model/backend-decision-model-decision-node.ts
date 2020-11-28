@@ -5,5 +5,5 @@ export class BackendDecisionModelDecisionNode {
 	public name:string = "";
 	public type:string = "";
 	public kbarticle: string = "";
-	public nextActions: BackendDecisionModelDecisionNodeOutcome[]= []  
+	public nextactions: BackendDecisionModelDecisionNodeOutcome[]= []  
 }
