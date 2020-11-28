@@ -131,6 +131,13 @@ export class ShowDecisionModelComponent implements OnInit {
 		});
 	}
 	
+	onPersistModel(uuid:string) : void {
+		this.backendService.persistDecisionModel(uuid).subscribe(
+			data => this.onUUIDResult(data),
+			error => this.onDecisionModelFailed(error)			
+		);
+	}
+	
 	onUUIDResult(result:BackendModelUUIDResult) : void {
 		console.log(result);
 		// either redirect via parameter or update current model, but via parameter (activatedroute) is better, because the browsers back button can be used.

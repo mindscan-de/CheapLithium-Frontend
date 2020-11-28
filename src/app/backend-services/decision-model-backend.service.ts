@@ -13,6 +13,7 @@ export class DecisionModelBackendService {
 	
 	private _decisionModelLocation          = '/CheapLithium/rest/getDecisionModel/';
 	private _createDecisionModelLocation    = '/CheapLithium/rest/createDecisionModel';
+	private _persistDecisionModelLocation   = '/CheapLithium/rest/persistDecisionModel';
 	private _createDecisionNodeLocation     = '/CheapLithium/rest/createDecisionNode'; 
 	
 	// TODO: these BackendServices:
@@ -76,4 +77,13 @@ export class DecisionModelBackendService {
 
 		return this.httpClient.post<BackendModelUUIDResult>( this._cloneDecisionModelLocation, formdata);
 	}
+	
+    persistDecisionModel(uuid: string) : Observable<BackendModelUUIDResult>{
+        let formdata = new FormData();
+
+		formdata.append("uuid",uuid)
+
+		return this.httpClient.post<BackendModelUUIDResult>( this._persistDecisionModelLocation, formdata);
+    }
+	
 }
