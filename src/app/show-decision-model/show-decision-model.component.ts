@@ -35,7 +35,11 @@ export class ShowDecisionModelComponent implements OnInit {
 	ngOnInit(): void {
 		// @TODO: read uuid from url as parameter
 		
-		this.backendService.getDecisionModel("0518f24f-41a0-4f13-b5f6-94a015b5b04c").subscribe(
+		this.retrieveModel("0518f24f-41a0-4f13-b5f6-94a015b5b04c");
+	}
+	
+	retrieveModel(uuid:string) : void {
+		this.backendService.getDecisionModel(uuid).subscribe(
 			data => this.onDecisionModelLoaded(data),
 			error => this.onDecisionModelFailed(error)
 		);
@@ -124,6 +128,8 @@ export class ShowDecisionModelComponent implements OnInit {
 	
 	onUUIDResult(result:BackendModelUUIDResult) : void {
 		console.log(result);
+		// either redirect via parameter or update current model, but via parameter (activatedroute) is better, because the browsers back button can be used.
+		this.retrieveModel(result.uuid);
 	}
 	
 	onError(error):void {
