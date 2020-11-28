@@ -43,7 +43,7 @@ export class DecisionModelBackendService {
 		let formdata = new FormData();
 
 		formdata.append("name", name);
-		formdata.append("type", type);
+		formdata.append("exectype", type);
 		formdata.append("kbarticle", kbarticle);
 		formdata.append("dmuuid", dmuuid);
 		
