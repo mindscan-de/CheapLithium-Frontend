@@ -28,11 +28,11 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
 				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item" >
-					<button type="button" class="btn btn-outline-primary float-right" (click)="onClickDecisionNode(node.uuid)">edit</button>
+					<button type="button" class="btn btn-outline-secondary float-right" (click)="onClickDecisionNode(node.uuid)">edit</button>
 					<h4>{{node.name}}</h4>
 					<p>{{node.type}}</p>
 					<p>{{node.kbarticle}}</p>
-					<button type="button" class="btn btn-outline-warning float-right" (click)="onAddDecisionNodeTransition(decisionModel.uuid ,node)">add</button>
+					<button type="button" class="btn btn-outline-secondary float-right ml-1" (click)="onAddDecisionNodeTransition(decisionModel.uuid ,node)">add</button>
 					<ul class="list-group">
 						<li *ngFor="let nextAction of node.nextactions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(node.uuid,i)" >
 							<span class="badge badge-secondary mr-1">{{decisionNodeMap.get(nextAction.next)?.name}}</span> -- {{nextAction.name}} -- {{nextAction.template}}
