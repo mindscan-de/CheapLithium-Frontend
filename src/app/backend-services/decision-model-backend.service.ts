@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 // include the BackendModel defintion
 import { BackendDecisionModel } from './backend-model/backend-decision-model';
+import { BackendDecisionModelIndex } from './backend-model/backend-decision-model-index';
 import { BackendModelUUIDResult } from './backend-model/backend-model-uuidresult';
 
 @Injectable({
@@ -12,6 +13,7 @@ import { BackendModelUUIDResult } from './backend-model/backend-model-uuidresult
 export class DecisionModelBackendService {
 	
 	private _decisionModelLocation          = '/CheapLithium/rest/getDecisionModel/';
+	private _decisionModelListLocation      = '/CheapLithium/rest/getDecisionModelList';
 	private _createDecisionModelLocation    = '/CheapLithium/rest/createDecisionModel';
 	private _persistDecisionModelLocation   = '/CheapLithium/rest/persistDecisionModel';
 	private _createDecisionNodeLocation     = '/CheapLithium/rest/createDecisionNode'; 
@@ -27,6 +29,12 @@ export class DecisionModelBackendService {
 		let httpParamteres= new HttpParams();
 		
 		return this.httpClient.get<BackendDecisionModel>( this._decisionModelLocation + uuid, {params:httpParamteres} );
+	}
+	
+	getDecisionModelIndex () : Observable<BackendDecisionModelIndex> {
+		let httpParameters = new HttpParams();
+		
+		return this.httpClient.get<BackendDecisionModelIndex>( this._decisionModelListLocation, {params:httpParameters} )
 	}
 
 	createDecisionModel(name:string, displayname:string, description:string, version:string) : Observable<BackendModelUUIDResult> {
