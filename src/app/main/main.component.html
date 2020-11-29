@@ -9,7 +9,7 @@
 		<div class="col-lg mt-8">
 			<div class="btn-toolbar float-right" role="toolbar" >
 				<div class="btn-group ml-2" role="group">
-					<a type="button" class="btn btn-secondary" href="/main">All Threads</a>
+					<a type="button" class="btn btn-primary" href="/main">All Threads</a>
 				</div>
 			</div>
 		</div>
@@ -21,8 +21,8 @@
 				<li *ngFor="let item of decisionModelIndex.items;" class="list-group-item">
 					<div class="btn-toolbar float-right" role="toolbar" >
 						<div class="btn-group ml-2" role="group">
-							<a type="button" class="btn btn-outline-secondary float-right" href="/showDecisionModel/{{item.uuid}}">show</a>
-							<button type="button" class="btn btn-outline-primary float-right" (click)="onClickDecisionModelExecute(item.uuid)">execute</button>
+							<button type="button" class="btn btn-outline-secondary float-right" (click)="onClickDecisionModelExecute(item.uuid)">start</button>
+							<a type="button" class="btn btn-outline-primary float-right" href="/showDecisionModel/{{item.uuid}}">show</a>
 						</div>
 					</div>
 					<h5>{{item.displayname}} &mdash; {{item.version}}</h5>
