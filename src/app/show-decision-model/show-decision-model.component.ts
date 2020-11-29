@@ -12,7 +12,7 @@ import {EditDecisionNodeDialogComponent} from './edit-decision-node-dialog/edit-
 import {EditDecisionNodeTransitionDialogComponent} from './edit-decision-node-transition-dialog/edit-decision-node-transition-dialog.component';
 
 
-// import the backend serice, which provides the decision model data
+// import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 
 // import the m2m transformation for translating the backend model to the ui model
@@ -35,9 +35,9 @@ export class ShowDecisionModelComponent implements OnInit {
 	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
 
 	ngOnInit(): void {
-		// @TODO: read uuid from url as parameter
+		var uuid = this.activatedRoute.snapshot.params['uuid'];
 		
-		this.retrieveModel("0518f24f-41a0-4f13-b5f6-94a015b5b04c");
+		this.retrieveModel(uuid);
 	}
 	
 	retrieveModel(uuid:string) : void {
