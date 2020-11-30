@@ -17,6 +17,7 @@ import { CreateDecisionNodeDialogComponent } from './show-decision-model/create-
 import { EditDecisionNodeDialogComponent } from './show-decision-model/edit-decision-node-dialog/edit-decision-node-dialog.component';
 import { EditDecisionNodeTransitionDialogComponent } from './show-decision-model/edit-decision-node-transition-dialog/edit-decision-node-transition-dialog.component';
 import { ThreadsComponent } from './threads/threads.component';
+import { ShowDecisionThreadComponent } from './show-decision-thread/show-decision-thread.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ThreadsComponent } from './threads/threads.component';
 	CreateDecisionNodeDialogComponent,
 	EditDecisionNodeDialogComponent,
 	EditDecisionNodeTransitionDialogComponent,
-	ThreadsComponent
+	ThreadsComponent,
+	ShowDecisionThreadComponent
   ],
   imports: [
     BrowserModule,
