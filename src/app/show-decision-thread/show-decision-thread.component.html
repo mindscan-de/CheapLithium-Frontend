@@ -13,7 +13,8 @@
 					<a type="button" class="btn btn-primary" routerLink="/main">Main</a>
 				</div>
 			</div>
-			<h2>Current State</h2>
+			<h2>{{decisionModel.displayname}} / {{decisionModel.version}}</h2>
+			<h3>CurrentState</h3>
 		</div>
 	</div>
 	
@@ -21,6 +22,7 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
 				<li class="list-group-item">
+				<h4>{{decisionNodeMap.get(decisionThread.currentnode)?.name}}</h4>
 				</li>
 			</ul>
 			
@@ -29,7 +31,7 @@
 	
 	<div class="row">
 		<div class="col-lg mt-1">
-			<h2>Recent Changes in current Thread</h2>
+			<h3>Recent Changes in current Thread</h3>
 			<ul class="list-group">
 				<li class="list-group-item">
 				</li>
