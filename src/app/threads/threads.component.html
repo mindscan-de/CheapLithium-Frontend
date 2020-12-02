@@ -19,17 +19,25 @@
 	<div class="row">
 		<div class="col-lg mt-1">
 			<ul class="list-group">
-				<li class="list-group-item">
+				<li *ngFor="let thread of decisionThreadIndex.threads;" class="list-group-item">
 					<div class="btn-toolbar float-right" role="toolbar" >
 						<div class="btn-group ml-2" role="group">
 							<button type="button" class="btn btn-outline-secondary">decide current state</button>
-							<a type="button" class="btn btn-outline-primary"  routerLink="/showDecisionThread/uuid">show thread</a>
-							<a type="button" class="btn btn-outline-primary"  routerLink="/showDecisionModel/uuid">show model</a>
+							<a type="button" class="btn btn-outline-primary"  routerLink="/showDecisionThread/{{thread.uuid}}">show thread</a>
+							<a type="button" class="btn btn-outline-primary"  routerLink="/showDecisionModel/{{thread.currentmodel}}">show model</a>
 						</div>
 					</div>
-					Thread X / problem / Ticket IDs 
-					Model / version -> decide/work	
+					Model + version (TODO: query referenced decision model for (display)name and version)
+					Thread X / problem
+					
+					<div>
+					{{thread.currentstate}} / {{thread.owner}}
+					</div>
+					<div>
+						<span *ngFor="let ticketID of thread.ticketreference;" class="badge badge-success mr-1">{{ticketID}}</span>
+					</div>					
 				</li>
+				
 			</ul>
 		</div>
 	</div>
