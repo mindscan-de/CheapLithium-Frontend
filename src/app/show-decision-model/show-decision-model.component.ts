@@ -130,8 +130,11 @@ export class ShowDecisionModelComponent implements OnInit {
 		});
 	}
 	
-	onClickDecisionNodeTransition(uuid:string, index:number): void {
+	onClickDecisionNodeTransition(modeluuid:string, node:BackendDecisionModelDecisionNode, index:number): void {
 		const modalref = this.modalService.open(EditDecisionNodeTransitionDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+		
+		modalref.componentInstance.setDialogData(
+			node,index, Array.from(this.decisionNodeMap.values()));
 
 		modalref.result.then((result) => {
 		  // this.closeResult = `Closed with: ${result}`;

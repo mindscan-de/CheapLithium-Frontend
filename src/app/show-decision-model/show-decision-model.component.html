@@ -34,7 +34,7 @@
 					<p>{{node.kbarticle}}</p>
 					<button type="button" class="btn btn-outline-secondary float-right ml-1" (click)="onAddDecisionNodeTransition(decisionModel.uuid ,node)">add</button>
 					<ul class="list-group">
-						<li *ngFor="let nextAction of node.nextactions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(node.uuid,i)" >
+						<li *ngFor="let nextAction of node.nextactions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(decisionModel.uuid, node, i)" >
 							<span class="badge badge-secondary mr-1">{{decisionNodeMap.get(nextAction.next)?.name}}</span> -- {{nextAction.name}} -- {{nextAction.template}}
 						</li>
 					</ul>
