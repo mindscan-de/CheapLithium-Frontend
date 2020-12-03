@@ -22,6 +22,7 @@ export class ShowDecisionThreadComponent implements OnInit {
 	public decisionThreadTmp: BackendDecisionThread; 
 	public decisionModel: BackendDecisionModel = new BackendDecisionModel();
 	public decisionNodeMap: Map<string,BackendDecisionModelDecisionNode> = new Map(); 
+	public currentNodeData: BackendDecisionModelDecisionNode = new BackendDecisionModelDecisionNode(); 
 
 	constructor( private activatedRoute : ActivatedRoute, private backendModelService: DecisionModelBackendService, private backendThreadService: DecisionThreadBackendService,  private modalService: NgbModal) { }
 
@@ -60,6 +61,7 @@ export class ShowDecisionThreadComponent implements OnInit {
 		this.decisionNodeMap = newMap;
 		this.decisionModel = model;
 		this.decisionThread = this.decisionThreadTmp;
+		this.currentNodeData = newMap.get(this.decisionThread.currentnode);
 	}
 
 	
