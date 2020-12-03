@@ -6,6 +6,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 // additional components
 import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component';
 import {CreateDecisionNodeDialogComponent} from './create-decision-node-dialog/create-decision-node-dialog.component';
+import {CreateDecisionNodeTransitionDialogComponent} from './create-decision-node-transition-dialog/create-decision-node-transition-dialog.component';
 import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/copy-decision-model-dialog.component';
 import {EditDecisionModelDialogComponent} from './edit-decision-model-dialog/edit-decision-model-dialog.component';
 import {EditDecisionNodeDialogComponent} from './edit-decision-node-dialog/edit-decision-node-dialog.component';
@@ -151,6 +152,12 @@ export class ShowDecisionModelComponent implements OnInit {
 	}
 	
 	onAddDecisionNodeTransition(dmuuid: string, decisionNode ) : void {
+		const modalref = this.modalService.open(CreateDecisionNodeTransitionDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+		modalref.result.then((result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
 		
 	}
 	
