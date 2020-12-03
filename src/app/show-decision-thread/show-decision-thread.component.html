@@ -14,21 +14,47 @@
 				</div>
 			</div>
 			<h2>{{decisionModel.displayname}} / {{decisionModel.version}}</h2>
-			<h3>CurrentState</h3>
+			
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-lg mt-1">
+			<h3>CurrentState</h3>
 			<ul class="list-group">
 				<li class="list-group-item">
-				<h4>{{decisionNodeMap.get(decisionThread.currentnode)?.name}}</h4>
+					<div class="btn-toolbar float-right" role="toolbar" >
+						<div class="btn-group ml-2" role="group">
+							<a type="button" class="btn btn-outline-primary" routerLink="/showDecisionModel/{{decisionThread.currentmodel}}">show full model</a>
+						</div>
+					</div>
+					<h4>{{currentNodeData.name}} <span class="badge badge-success">{{currentNodeData.type}}</span></h4> 
+					
+					show the basic content of the knowledge base article here
+					provide a dialog  which provides many more information
+					
+					* TODO: only HIT nodes will provide the input field
+					* STARTNODES will be executed and the only transition will be taken
+					
+					<div class="container mt-2">
+						The next button will transfer the data and then execute the operation defined, then all transitions are tested, the first to be found true, will succeed
+						<button type="button" class="btn btn-danger">next</button>
+					</div>
+					
+					<h5>The next possible states are</h5>
+					<ul class="list-group mt-1">
+						<li *ngFor="let decision of currentNodeData.nextactions" class="list-group-item">
+							if ({{decision.isTransition}}) ==&gt; {{decisionNodeMap.get(decision.next)?.name}}
+						</li>
+					</ul>
 				</li>
 			</ul>
-			
 		</div>
 	</div>
-	
+
+</div>
+
+<div class="container mt-2">
 	<div class="row">
 		<div class="col-lg mt-1">
 			<h3>Recent Changes in current Thread</h3>
