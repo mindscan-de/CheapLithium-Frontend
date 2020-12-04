@@ -2,11 +2,7 @@ import { Component } from '@angular/core';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-// backend Service
-import { DecisionModelBackendService } from '../../backend-services/decision-model-backend.service';
-
 // Backend Model
-import { BackendModelUUIDResult } from '../../backend-services/backend-model/backend-model-uuidresult';
 import { BackendDecisionModelDecisionNodeOutcome } from '../../backend-services/backend-model/backend-decision-model-decision-node-outcome';
 import { BackendDecisionModelDecisionNode } from '../../backend-services/backend-model/backend-decision-model-decision-node';
 
@@ -25,33 +21,26 @@ export class EditDecisionNodeTransitionDialogComponent  {
 	public dntTransitIf: string = "";
 	public dntNodeList: BackendDecisionModelDecisionNode[] = []; 
 	
-
-	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
+	constructor(public activeModal: NgbActiveModal) { }
 	
-	setDialogData( node : BackendDecisionModelDecisionNode, index:number, nodelist:BackendDecisionModelDecisionNode[] ):void {
-		
-		let transition= node.nextactions[index];
-		
-		console.log(transition);
-		console.log(nodelist);
-		
+	setDialogData( node : BackendDecisionModelDecisionNode, transition:BackendDecisionModelDecisionNodeOutcome, nodelist:BackendDecisionModelDecisionNode[] ):void {
 		this.dnState = node;
+		this.dntNodeList = nodelist;
 		this.dntName = transition.name;
 		this.dntTemplate = transition.template;
 		this.dntNextNode = transition.next;
 		this.dntTransitIf = transition.transitif;
-		
-		// list of follownodes
-		this.dntNodeList = nodelist;
-		
-		// model id
-		// node id
-		// transition index,
 	}
 
 	onUpdate() : void {
-		this.activeModal.close('update');
+		let updatedTransition = new BackendDecisionModelDecisionNodeOutcome();
+		
+		updatedTransition.name = this.dntName;
+		updatedTransition.next = this.dntNextNode;
+		updatedTransition.template = this.dntTemplate;
+		updatedTransition.transitif = this.dntTransitIf;
+		
+		this.activeModal.close( updatedTransition );
 	}
-
 
 }

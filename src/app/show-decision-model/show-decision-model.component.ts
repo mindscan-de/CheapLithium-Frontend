@@ -135,7 +135,7 @@ export class ShowDecisionModelComponent implements OnInit {
 		const modalref = this.modalService.open(EditDecisionNodeTransitionDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
 		
 		modalref.componentInstance.setDialogData(
-			node,index, Array.from(this.decisionNodeMap.values()));
+			node, node.nextactions[index], Array.from(this.decisionNodeMap.values()));
 
 		modalref.result.then((result) => {
 		  // this.closeResult = `Closed with: ${result}`;
