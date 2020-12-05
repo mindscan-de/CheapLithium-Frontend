@@ -138,7 +138,14 @@ export class ShowDecisionModelComponent implements OnInit {
 			node, node.nextactions[index], Array.from(this.decisionNodeMap.values()));
 
 		modalref.result.then((result) => {
-		  // this.closeResult = `Closed with: ${result}`;
+			
+			let updatedTransition = result;
+			
+			this.backendService.updateDecisionNodeTransition(modeluuid, node.uuid, index, updatedTransition).subscribe(
+				data => this.onUUIDResult(data),
+				error => this.onDecisionModelFailed(error)
+			);
+			
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
@@ -150,15 +157,22 @@ export class ShowDecisionModelComponent implements OnInit {
 			error => this.onDecisionModelFailed(error)			
 		);
 	}
-	
-	onAddDecisionNodeTransition(dmuuid: string, decisionNode ) : void {
+
+	onAddDecisionNodeTransition(dmuuid: string, decisionNode:BackendDecisionModelDecisionNode ) : void {
 		const modalref = this.modalService.open(CreateDecisionNodeTransitionDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+
 		modalref.result.then((result) => {
-		  // this.closeResult = `Closed with: ${result}`;
+			
+			let newTransition = result;
+			
+			this.backendService.insertDecisionNodeTransition(dmuuid,decisionNode.uuid,newTransition).subscribe(
+				data => this.onUUIDResult(data),
+				error => this.onDecisionModelFailed(error)
+			);
+			
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
-		
 	}
 	
 	onUUIDResult(result:BackendModelUUIDResult) : void {
