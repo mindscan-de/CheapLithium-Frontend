@@ -160,6 +160,8 @@ export class ShowDecisionModelComponent implements OnInit {
 
 	onAddDecisionNodeTransition(dmuuid: string, decisionNode:BackendDecisionModelDecisionNode ) : void {
 		const modalref = this.modalService.open(CreateDecisionNodeTransitionDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+		
+		modalref.componentInstance.setDialogData(decisionNode, Array.from(this.decisionNodeMap.values()) );
 
 		modalref.result.then((result) => {
 			
