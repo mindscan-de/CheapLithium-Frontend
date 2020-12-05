@@ -101,6 +101,14 @@ export class DecisionModelBackendService {
 	
 	// 	
 	
+	/**
+	 * Inserts a new transition to a given decision node in a given decision model.
+	 *
+	 * @param uuid - the decision model uuid as string
+     * @param dnuuid - the decision node uuid as string
+	 * @param transition - the transition to insert as BackendDecisionModelDecisionNodeOutcome
+	 * @returns An observer ...
+     */
 	insertDecisionNodeTransition(uuid:string, dnuuid:string, transition:BackendDecisionModelDecisionNodeOutcome) : Observable<BackendModelUUIDResult> {
 		let formdata = new FormData();
 		
@@ -111,6 +119,15 @@ export class DecisionModelBackendService {
 		return this.httpClient.post<BackendModelUUIDResult>( this._insertDecisionNodeTransitionLocation, formdata);
 	}
 	
+	/**
+	 * Updates a given transition(by index) for a given decision node in a given decision model.
+	 *
+	 * @param uuid - the decision model uuid as string
+     * @param dnuuid - the decision node uuid as string
+     * @param tindex - the index if the ransition to update as number
+	 * @param transition - the transition to insert as BackendDecisionModelDecisionNodeOutcome
+	 * @returns An observer ...
+     */
 	updateDecisionNodeTransition(uuid:string, dnuuid:string, tindex:number, updtransition:BackendDecisionModelDecisionNodeOutcome ) : Observable<BackendModelUUIDResult> {
 		let formdata = new FormData();
 		
