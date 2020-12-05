@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-// backend Service
-import { DecisionModelBackendService } from '../../backend-services/decision-model-backend.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 // backend model
 import { BackendDecisionModelDecisionNode } from '../../backend-services/backend-model/backend-decision-model-decision-node';
+import { BackendDecisionModelDecisionNodeOutcome } from '../../backend-services/backend-model/backend-decision-model-decision-node-outcome';
 
 @Component({
   selector: 'app-create-decision-node-transition-dialog',
@@ -14,16 +13,30 @@ import { BackendDecisionModelDecisionNode } from '../../backend-services/backend
 })
 export class CreateDecisionNodeTransitionDialogComponent  {
 	
+	public dnState: BackendDecisionModelDecisionNode = new BackendDecisionModelDecisionNode();
 	public dntName: string = "";
 	public dntTemplate: string = "";
 	public dntNextNode: string = ""; 
 	public dntTransitIf: string = "";
 	public dntNodeList: BackendDecisionModelDecisionNode[] = []; 
 
+	constructor(public activeModal: NgbActiveModal) { }
 
-	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
+	
+	setDialogData( node : BackendDecisionModelDecisionNode, nodelist:BackendDecisionModelDecisionNode[] ):void {
+		this.dnState = node;
+		this.dntNodeList = nodelist;
+	}
+	
 
 	onCreate() : void {
+		let updatedTransition = new BackendDecisionModelDecisionNodeOutcome();
 		
+		updatedTransition.name = this.dntName;
+		updatedTransition.next = this.dntNextNode;
+		updatedTransition.template = this.dntTemplate;
+		updatedTransition.transitif = this.dntTransitIf;
+		
+		this.activeModal.close( updatedTransition );
 	}
 }
