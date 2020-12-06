@@ -35,8 +35,14 @@ export class EditDecisionNodeDialogComponent  {
 	}
 	
 	onUpdate() : void {
-		// go back to model uuid
-		this.activeModal.close('update');
+		let updatedNode = new BackendDecisionModelDecisionNode();
+		
+		updatedNode.uuid = this.decisionNode.uuid;
+		updatedNode.name = this.dnName;
+		updatedNode.type = this.dnType;
+		updatedNode.kbarticle = this.dnKBAcrticle;
+		
+		this.activeModal.close(updatedNode);
 	}
 
 }

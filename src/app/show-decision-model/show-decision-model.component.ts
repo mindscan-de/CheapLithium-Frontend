@@ -127,8 +127,13 @@ export class ShowDecisionModelComponent implements OnInit {
 		modalref.componentInstance.setDecisionNodeData(modeluuid, node);
 
 		modalref.result.then((result) => {
-		  // this.closeResult = `Closed with: ${result}`;
-			// TODO:
+			let updatedNode:BackendDecisionModelDecisionNode = result;
+			
+			this.backendService.updateDecisionNodeForModel(modeluuid, updatedNode.uuid, updatedNode.name, updatedNode.type, updatedNode.kbarticle ).subscribe(
+				data => this.onUUIDResult(data),
+				error => this.onDecisionModelFailed(error)
+			);
+			
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
