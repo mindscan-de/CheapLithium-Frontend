@@ -19,12 +19,13 @@ export class DecisionModelBackendService {
 	private _createDecisionModelLocation    = '/CheapLithium/rest/createDecisionModel';
 	private _persistDecisionModelLocation   = '/CheapLithium/rest/persistDecisionModel';
 	private _createDecisionNodeLocation     = '/CheapLithium/rest/createDecisionNode';
+	private _updateDecisionNodeLocation     = '/CheapLithium/rest/updateDecisionNode';
+	private _insertDecisionNodeTransitionLocation   = '/CheapLithium/rest/insertDecisionNodeTransition';
+	private _updateDecisionNodeTransitionLocation   = '/CheapLithium/rest/updateDecisionNodeTransition';
 	
 	// TODO: these BackendServices:
 	private _updateDecisionModelLocation    = '/CheapLithium/rest/updateDecisionModel';
 	private _cloneDecisionModelLocation     = '/CheapLithium/rest/cloneDecisionModel';
-	private _insertDecisionNodeTransitionLocation   = '/CheapLithium/rest/insertDecisionNodeTransition';
-	private _updateDecisionNodeTransitionLocation   = '/CheapLithium/rest/updateDecisionNodeTransition';
 	
 
 	constructor( private httpClient : HttpClient) { }
@@ -63,6 +64,20 @@ export class DecisionModelBackendService {
 		return this.httpClient.post<BackendModelUUIDResult>(this._createDecisionNodeLocation, formdata);
 	}
 	
+	updateDecisionNodeForModel(dmuuid:string, dnuuid:string, name:string, type:string, kbarticle:string) : Observable<BackendModelUUIDResult> {
+		let formdata = new FormData();
+
+		// where		
+		formdata.append("uuid",dmuuid);
+		formdata.append("dnuuid", dnuuid);
+		// what
+		formdata.append("name", name);
+		formdata.append("exectype", type);
+		formdata.append("kbarticle", kbarticle);
+		
+		return this.httpClient.post<BackendModelUUIDResult>(this._updateDecisionNodeLocation, formdata);
+	}
+	
 	updateDecisionModel(uuid:string, name:string, displayname: string, description:string, version:string) : Observable<BackendModelUUIDResult> {
 		let formdata = new FormData();
 		
@@ -75,6 +90,7 @@ export class DecisionModelBackendService {
 		return this.httpClient.post<BackendModelUUIDResult>( this._updateDecisionModelLocation, formdata);
 	}
 	
+	// NYI in backend
 	cloneDecisionModel(uuid:string, name:string, displayname: string, description:string, version:string) : Observable<BackendModelUUIDResult> {
 		// the model uuid: will be used as a template with these modifications
 		let formdata = new FormData();
