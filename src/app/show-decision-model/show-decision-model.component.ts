@@ -16,7 +16,7 @@ import {EditDecisionNodeTransitionDialogComponent} from './edit-decision-node-tr
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 
-// import the m2m transformation for translating the backend model to the ui model
+// TODO: import the m2m transformation for translating the backend model to the ui model
 
 // use the backendmodel
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
@@ -121,11 +121,14 @@ export class ShowDecisionModelComponent implements OnInit {
 		
 	}
 	
-	onClickDecisionNode(uuid:string) : void {
+	onClickDecisionNode(modeluuid:string, node:BackendDecisionModelDecisionNode) : void {
 		const modalref = this.modalService.open(EditDecisionNodeDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+		
+		modalref.componentInstance.setDecisionNodeData(modeluuid, node);
 
 		modalref.result.then((result) => {
 		  // this.closeResult = `Closed with: ${result}`;
+			// TODO:
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
@@ -179,7 +182,9 @@ export class ShowDecisionModelComponent implements OnInit {
 	
 	onUUIDResult(result:BackendModelUUIDResult) : void {
 		console.log(result);
-		// either redirect via parameter or update current model, but via parameter (activatedroute) is better, because the browsers back button can be used.
+		// TODO:
+		// either redirect via parameter or update current model (depends if currentmodel==result.uuid), 
+		// but via parameter (activatedroute) is better, because the browsers back button can be used.
 		this.retrieveModel(result.uuid);
 	}
 	
@@ -187,10 +192,4 @@ export class ShowDecisionModelComponent implements OnInit {
 		console.log(error)
 	}
 	
-	/* onDeleteNode(uuid:string) : void {
-		// in the service the node must be deleted
-		// in the service the incomming transitions to the node must be deleted
-	} */
-	
-
 }

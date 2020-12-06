@@ -28,7 +28,7 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
 				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item" >
-					<button type="button" class="btn btn-outline-secondary float-right" (click)="onClickDecisionNode(node.uuid)">edit</button>
+					<button type="button" class="btn btn-outline-secondary float-right" (click)="onClickDecisionNode(decisionModel.uuid,node)">edit</button>
 					<h4>{{node.name}}</h4>
 					<p>{{node.type}}</p>
 					<p>{{node.kbarticle}}</p>
