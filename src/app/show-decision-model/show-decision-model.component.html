@@ -29,8 +29,7 @@
 			<ul class="list-group">
 				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item" >
 					<button type="button" class="btn btn-outline-secondary float-right" (click)="onClickDecisionNode(decisionModel.uuid,node)">edit</button>
-					<h4>{{node.name}}</h4>
-					<p>{{node.type}}</p>
+					<h4>{{node.name}} <span class="badge" [ngClass] = "{'badge-primary': node.type==='start', 'badge-success': node.type==='hit', 'badge-danger': node.type==='end', 'badge-info': node.type==='mit'}">{{node.type}}</span></h4>
 					<p>{{node.kbarticle}}</p>
 					<button type="button" class="btn btn-outline-secondary float-right ml-1" (click)="onAddDecisionNodeTransition(decisionModel.uuid ,node)">add</button>
 					<ul class="list-group">
