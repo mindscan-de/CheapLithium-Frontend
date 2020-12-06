@@ -33,11 +33,13 @@ possible. I don't care whether this models are later persisted into databases, f
 or anything alike. But for developing this application a simple Python based FastAPI
 backend will do the job.
 
-If a complex enough backend is implemented i will start a backend-project.
+A backend-project is started. you can find it under CheapLithium-Backend.
 
 ## Running
 
 Run this SearchFrontend via `ng serve --proxy-config=proxy.conf.json` then visit http://localhost:4200
+
+Or just use the provided batchfile (runFrontend.bat).
 
 
 ## License
