@@ -18,23 +18,20 @@ export class EditDecisionNodeDialogComponent  {
 	
 	public dmUuid: string = "";
 	public decisionNode: BackendDecisionModelDecisionNode = new BackendDecisionModelDecisionNode();
+	
+	public dnName: string = "";
+	public dnType: string = "";
+	public dnKBAcrticle: string = "";
 
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
 	
 	setDecisionNodeData(dmuuid: string, decisionNode: BackendDecisionModelDecisionNode) : void {
 		this.dmUuid = dmuuid;
 		this.decisionNode = decisionNode;
-	}
-	
-	onDeleteTransition( index:number ) : void {
-		// this.backendService.removeDecisionNodeTransition();
-		// then if successful, then adapt local list in decision node
-	}
-	
-	onCreateTransition() : void {
-		// maybe not yet...
-		// will not be implemented here now...
-		// open another modal dialog?
+		
+		this.dnName = decisionNode.name;
+		this.dnType = decisionNode.type;
+		this.dnKBAcrticle = decisionNode.kbarticle;
 	}
 	
 	onUpdate() : void {
