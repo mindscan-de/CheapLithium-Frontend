@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-// backend Service
-import { DecisionModelBackendService } from '../../backend-services/decision-model-backend.service';
-
 // Backend Model
-import { BackendModelUUIDResult } from '../../backend-services/backend-model/backend-model-uuidresult';
-
+// TODO: add the Model component 
 
 
 @Component({
@@ -15,8 +11,17 @@ import { BackendModelUUIDResult } from '../../backend-services/backend-model/bac
   styleUrls: ['./edit-decision-model-dialog.component.css']
 })
 export class EditDecisionModelDialogComponent  {
+	
+	public dmName: string = "";
+	public dmDescription: string = "";
+	public dmVersion: string = "";
+	public dmDisplayName: string = "";
 
-	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
+	constructor(public activeModal: NgbActiveModal ) { }
+
+	setDialogData() : void {
+		
+	}
 
 	onUpdate() : void {
 		// Maybe we should pass an observable to the model back, with the BackendModelUUIDResult
