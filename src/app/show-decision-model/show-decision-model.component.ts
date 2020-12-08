@@ -109,12 +109,24 @@ export class ShowDecisionModelComponent implements OnInit {
 	}
 	
 	onEditModel():void {
-		// will allow to edit the Decision Model
-		// name, displayname, Description, Version
 		const modalref = this.modalService.open(EditDecisionModelDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+		
+		modalref.componentInstance.setDialogData(this.decisionModel)
 
 		modalref.result.then((result) => {
-		  // this.closeResult = `Closed with: ${result}`;
+			let newDecisionModelData:BackendDecisionModel = result;
+			
+			this.backendService.updateDecisionModel(
+				this.decisionModel.uuid,
+				newDecisionModelData.name,
+				newDecisionModelData.displayname,
+				newDecisionModelData.description, 
+				newDecisionModelData.version
+			).subscribe(
+				data => this.onUUIDResult(data),
+				error => this.onDecisionModelFailed(error)
+			)
+		  
 		}, (reason) => {
 		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
 		});
