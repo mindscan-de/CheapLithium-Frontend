@@ -19,6 +19,7 @@ import { EditDecisionNodeTransitionDialogComponent } from './show-decision-model
 import { ThreadsComponent } from './threads/threads.component';
 import { ShowDecisionThreadComponent } from './show-decision-thread/show-decision-thread.component';
 import { CreateDecisionNodeTransitionDialogComponent } from './show-decision-model/create-decision-node-transition-dialog/create-decision-node-transition-dialog.component';
+import { KbaseComponent } from './kbase/kbase.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateDecisionNodeTransitionDialogComponent } from './show-decision-mod
 	EditDecisionNodeTransitionDialogComponent,
 	ThreadsComponent,
 	ShowDecisionThreadComponent,
-	CreateDecisionNodeTransitionDialogComponent
+	CreateDecisionNodeTransitionDialogComponent,
+	KbaseComponent
   ],
   imports: [
     BrowserModule,
