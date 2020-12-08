@@ -20,6 +20,7 @@ import { ThreadsComponent } from './threads/threads.component';
 import { ShowDecisionThreadComponent } from './show-decision-thread/show-decision-thread.component';
 import { CreateDecisionNodeTransitionDialogComponent } from './show-decision-model/create-decision-node-transition-dialog/create-decision-node-transition-dialog.component';
 import { KbaseComponent } from './kbase/kbase.component';
+import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { KbaseComponent } from './kbase/kbase.component';
 	ThreadsComponent,
 	ShowDecisionThreadComponent,
 	CreateDecisionNodeTransitionDialogComponent,
-	KbaseComponent
+	KbaseComponent,
+	MainNavigationComponent
   ],
   imports: [
     BrowserModule,
