@@ -22,6 +22,7 @@ import { CreateDecisionNodeTransitionDialogComponent } from './show-decision-mod
 import { KbaseComponent } from './kbase/kbase.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { ShowKBArticleComponent } from './show-kb-article/show-kb-article.component';
+import { MainFooterComponent } from './main-footer/main-footer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ShowKBArticleComponent } from './show-kb-article/show-kb-article.compon
 	CreateDecisionNodeTransitionDialogComponent,
 	KbaseComponent,
 	MainNavigationComponent,
-	ShowKBArticleComponent
+	ShowKBArticleComponent,
+	MainFooterComponent
   ],
   imports: [
     BrowserModule,
