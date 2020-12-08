@@ -10,6 +10,7 @@ import {ShowDecisionThreadComponent} from './show-decision-thread/show-decision-
 const routes: Routes = [
 	{ path: '', component:MainComponent},
 	{ path: 'main', component:MainComponent},
+	{ path: 'models', component:MainComponent},
 	{ path: 'kbase', component:KbaseComponent},
 	{ path: 'showDecisionModel/:uuid', component: ShowDecisionModelComponent},
 	{ path: 'threads', component: ThreadsComponent},
