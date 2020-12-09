@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+// import the dialogs used in this component
+import { StartDecisionModelDialogComponent } from './start-decision-model-dialog/start-decision-model-dialog.component';
+
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 import { BackendDecisionModelIndex } from '../backend-services/backend-model/backend-decision-model-index'; 
@@ -15,7 +20,7 @@ export class ModelsComponent implements OnInit {
 
 	public decisionModelIndex: BackendDecisionModelIndex = new BackendDecisionModelIndex();
 
-	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService) { }
+	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
 
 	ngOnInit(): void {
 		this.backendService.getDecisionModelIndex().subscribe(
@@ -32,5 +37,15 @@ export class ModelsComponent implements OnInit {
 		console.log(message);
 	}
 
+	onClickDecisionModelExecute(uuid:string) : void {
+		const modalref = this.modalService.open(StartDecisionModelDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
+		
+		// TODO: modalref.componentInstance.setDialogData()
+		
+		modalref.result.then(
+			(result)=>{},
+			(reason)=>{}
+		);
+	}
 
 }
