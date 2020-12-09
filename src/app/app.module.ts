@@ -23,6 +23,7 @@ import { KbaseComponent } from './kbase/kbase.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { ShowKBArticleComponent } from './show-kb-article/show-kb-article.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
+import { ModelsComponent } from './models/models.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MainFooterComponent } from './main-footer/main-footer.component';
 	KbaseComponent,
 	MainNavigationComponent,
 	ShowKBArticleComponent,
-	MainFooterComponent
+	MainFooterComponent,
+	ModelsComponent
   ],
   imports: [
     BrowserModule,
