@@ -24,6 +24,7 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
 import { ShowKBArticleComponent } from './show-kb-article/show-kb-article.component';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { ModelsComponent } from './models/models.component';
+import { StartDecisionModelDialogComponent } from './models/start-decision-model-dialog/start-decision-model-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModelsComponent } from './models/models.component';
 	MainNavigationComponent,
 	ShowKBArticleComponent,
 	MainFooterComponent,
-	ModelsComponent
+	ModelsComponent,
+	StartDecisionModelDialogComponent
   ],
   imports: [
     BrowserModule,
