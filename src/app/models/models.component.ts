@@ -8,7 +8,8 @@ import { StartDecisionModelDialogComponent } from './start-decision-model-dialog
 
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
-import { BackendDecisionModelIndex } from '../backend-services/backend-model/backend-decision-model-index'; 
+import { BackendDecisionModelIndex } from '../backend-services/backend-model/backend-decision-model-index';
+import { BackendThreadUUIDResult } from '../backend-services/backend-model/backend-thread-uuidresult'; 
 
 
 @Component({
@@ -43,7 +44,11 @@ export class ModelsComponent implements OnInit {
 		// TODO: modalref.componentInstance.setDialogData()
 		
 		modalref.result.then(
-			(result)=>{},
+			(result)=>{
+				let threaduuid: BackendThreadUUIDResult = result;
+				
+				// TODO: redirect to thread via activatedRoute?
+			},
 			(reason)=>{}
 		);
 	}

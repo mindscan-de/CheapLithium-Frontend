@@ -15,6 +15,8 @@ export class StartDecisionModelDialogComponent  {
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
 
 	onRun() : void {
+		// this dialog should run the model and let 
+		
 		this.activeModal.close('run');
 	}
 }
