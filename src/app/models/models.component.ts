@@ -8,6 +8,7 @@ import { StartDecisionModelDialogComponent } from './start-decision-model-dialog
 
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
+import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
 import { BackendDecisionModelIndex } from '../backend-services/backend-model/backend-decision-model-index';
 import { BackendThreadUUIDResult } from '../backend-services/backend-model/backend-thread-uuidresult'; 
 
@@ -38,10 +39,10 @@ export class ModelsComponent implements OnInit {
 		console.log(message);
 	}
 
-	onClickDecisionModelExecute(uuid:string) : void {
+	onClickDecisionModelExecute(decisionModel:BackendDecisionModel) : void {
 		const modalref = this.modalService.open(StartDecisionModelDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
 		
-		// TODO: modalref.componentInstance.setDialogData()
+		modalref.componentInstance.setDialogData(decisionModel)
 		
 		modalref.result.then(
 			(result)=>{
