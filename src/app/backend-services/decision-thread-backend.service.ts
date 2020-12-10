@@ -35,13 +35,13 @@ export class DecisionThreadBackendService {
 	}
 	
 	startDecisionThread ( uuid: string, ticketreference:string ):Observable<BackendThreadUUIDResult> {
-		let httpParameters = new HttpParams();
+		let formdata = new FormData();
 		
 		// what
-		httpParameters.append("uuid", uuid);
-		httpParameters.append("ticketreference", ticketreference)
+		formdata.append("uuid", uuid);
+		formdata.append("ticketreference", ticketreference)
 		// add more data?
 		
-		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadStartLocation, {params:httpParameters});
+		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadStartLocation, formdata);
 	}
 }
