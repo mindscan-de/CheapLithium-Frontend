@@ -22,7 +22,7 @@ export class ModelsComponent implements OnInit {
 
 	public decisionModelIndex: BackendDecisionModelIndex = new BackendDecisionModelIndex();
 
-	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
+	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal, private router : Router) { }
 
 	ngOnInit(): void {
 		this.backendService.getDecisionModelIndex().subscribe(
@@ -48,7 +48,11 @@ export class ModelsComponent implements OnInit {
 			(result)=>{
 				let threaduuid: BackendThreadUUIDResult = result;
 				
-				// TODO: redirect to thread via activatedRoute?
+				// redirect to threads ...
+				this.router.navigate(['/threads']);
+				
+				// TODO: redirect to created thread - if well implemented
+				// this.router.navigate(['/showDecisionThread', {uuid:threaduuid.uuid}])
 			},
 			(reason)=>{}
 		);
