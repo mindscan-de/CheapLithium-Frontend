@@ -5,8 +5,18 @@
   </button>
 </div>
 <div class="modal-body">
+
+	<h3>{{decisionModel.displayname}} &mdash; {{decisionModel.version}}</h3>
+
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">TicketReference</span>
+  		</div>
+		<input type="text" class="form-control" [(ngModel)]="ticketReference">
+	</div>
+	
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="onRun()">Run</button>
+  <button type="button" class="btn btn-outline-danger" (click)="onRun()">Run</button>
 </div>
 
