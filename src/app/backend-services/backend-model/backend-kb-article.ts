@@ -9,6 +9,8 @@ export class BackendKBArticle {
 	
 	public pagesummary : string = "abstract of the content";
 	
+	public revision : number = 1;
+	
 	
 	// cotains Rationale WHY - why to do
 	// contains WHAT - what to do
