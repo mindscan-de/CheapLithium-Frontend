@@ -25,6 +25,8 @@ import { ShowKBArticleComponent } from './show-kb-article/show-kb-article.compon
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { ModelsComponent } from './models/models.component';
 import { StartDecisionModelDialogComponent } from './models/start-decision-model-dialog/start-decision-model-dialog.component';
+import { EditKBArticleDialogComponent } from './show-kb-article/edit-kbarticle-dialog/edit-kbarticle-dialog.component';
+import { CreateKBArticleDialogComponent } from './show-kb-article/create-kbarticle-dialog/create-kbarticle-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { StartDecisionModelDialogComponent } from './models/start-decision-model
 	ShowKBArticleComponent,
 	MainFooterComponent,
 	ModelsComponent,
-	StartDecisionModelDialogComponent
+	StartDecisionModelDialogComponent,
+	EditKBArticleDialogComponent,
+	CreateKBArticleDialogComponent
   ],
   imports: [
     BrowserModule,
