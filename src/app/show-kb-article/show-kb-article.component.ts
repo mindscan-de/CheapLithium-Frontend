@@ -43,5 +43,15 @@ export class ShowKBArticleComponent implements OnInit {
         console.log(error);
     }
 
+	onCreateArticle() : void {
+		// This will create a new article and the user shoud then be redirectedto the new article,
+		// the dialog will create it and then return a new uuid
+		// then the angular router will redirect the user to the new url with the new uuid
+	}
+	
+	onEditArticle() : void {
+		// this will open a dialog for editing an article, the user is then redicted to the same 
+		// article again / reload the content using the retrieveArticle method. 
+	}
 
 }
