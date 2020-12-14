@@ -7,7 +7,14 @@
 	
 	<app-main-navigation></app-main-navigation>
 
-
-	<h3>{{article.pagetitle}}</h3>
+	<div class="row">
+		<div class="col-lg mt-8">
+			<h3>{{article.pagetitle}}</h3>
+			<p>Revision: {{article.revision}}</p>
+			<p>{{article.pagesummary}}</p>
+			<p>{{article.pagecontent}}</p>
+			<p>{{article.uuid}}</p>
+		</div>
+	</div>
 </div>
 
