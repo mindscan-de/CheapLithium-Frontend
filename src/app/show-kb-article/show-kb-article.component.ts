@@ -7,7 +7,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { KnowledgeBaseBackendService } from '../backend-services/knowledge-base-backend.service';
 
 // import dialogs.
-import { CreateKBArticleDialogComponent } from "./create-kbarticle-dialog/create-kbarticle-dialog.component";
+import { CreateKBArticleDialogComponent } from './create-kbarticle-dialog/create-kbarticle-dialog.component';
+import { EditKBArticleDialogComponent } from './edit-kbarticle-dialog/edit-kbarticle-dialog.component';
 
 // import the backend model data types
 import { BackendKBArticle } from '../backend-services/backend-model/backend-kb-article';
@@ -64,7 +65,20 @@ export class ShowKBArticleComponent implements OnInit {
 	
 	onEditArticle() : void {
 		// this will open a dialog for editing an article, the user is then redicted to the same 
-		// article again / reload the content using the retrieveArticle method. 
+		// article again / reload the content using the retrieveArticle method.
+		
+		const modalref = this.modalService.open(EditKBArticleDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.componentInstance.setDialogData(this.article);
+		
+		modalref.result.then(
+			(result)=> {
+				let newKbArticleValues:BackendKBArticle = result;
+				
+				// TODO: do something with the new data values ...
+			}, (reason)=> {
+			// something else was clicked...
+		});
 	}
 
 

@@ -1,1 +1,31 @@
-<p>edit-kbarticle-dialog works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Update Knowledge Base Article</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Dismiss')">
+	<span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Page Title</span>
+  		</div>
+  		<input type="text" class="form-control" [(ngModel)]="kbaPageTitle">
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Page Summary</span>
+  		</div>
+  		<textarea class="form-control" aria-label="With textarea" [(ngModel)]="kbaPageSummary"></textarea>
+	</div>
+	
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+    		<span class="input-group-text">Page Content</span>
+  		</div>
+  		<textarea class="form-control" aria-label="With textarea" [(ngModel)]="kbaPageContent"></textarea>
+	</div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="onUpdate()">Update</button>
+</div>
+
