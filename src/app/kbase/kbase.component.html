@@ -7,5 +7,22 @@
 	
 	<app-main-navigation></app-main-navigation>
 
-	<a type="button" class="btn btn-outline-primary" routerLink="/showArticle/xxxxx" routerLinkActive="active">Read Article</a>
+
+	<div class="row">
+		<div class="col-lg mt-1">
+			<ul class="list-group">
+				<li *ngFor="let article of kbarticleIndex.result" class="list-group-item" >
+					<div class="btn-toolbar float-right" role="toolbar" >
+						<div class="btn-group ml-2" role="group">
+							<a type="button" class="btn btn-outline-primary float-right" routerLink="/showArticle/{{article.uuid}}">show</a>
+						</div>
+					</div>
+				
+					<h5>{{article.pagetitle}} &mdash; rev.: {{article.revision}}</h5>
+					<p>{{article.pagesummary}}</p>
+				</li>
+			</ul>
+		</div>	
+	</div>
+	
 </div>
