@@ -10,6 +10,10 @@ export class BackendKBArticle {
 	public pagesummary : string = "abstract of the content";
 	
 	public revision : number = 1;
+
+	// this should be date time, but it is basically only time in seconds and fractions - anyways good enough fo now	
+	public created : string = "";
+	public modified : string = "";
 	
 	
 	// cotains Rationale WHY - why to do

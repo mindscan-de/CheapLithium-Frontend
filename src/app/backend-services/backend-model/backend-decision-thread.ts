@@ -7,4 +7,7 @@ export class BackendDecisionThread {
 	public currentnode: string = "";
 	public ticketreference: string[] = [];
 	public owner: string = "";
+	public created: string = "";
+	public modified: string = "";
+	public finalized: string = "";
 }
