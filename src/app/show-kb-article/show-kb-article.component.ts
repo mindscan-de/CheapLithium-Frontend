@@ -55,7 +55,7 @@ export class ShowKBArticleComponent implements OnInit {
 		
 		modalref.result.then((result) => {
 			result.subscribe(
-				data => this.onUUIDResult(data),
+				data => this.onCreateUUIDResult(data),
 				error => this.onError(error)
 			)
 		}, (reason) => {
@@ -76,13 +76,14 @@ export class ShowKBArticleComponent implements OnInit {
 				let newKbArticleValues:BackendKBArticle = result;
 				
 				// TODO: do something with the new data values ...
+				
 			}, (reason)=> {
 			// something else was clicked...
 		});
 	}
 
 
-	onUUIDResult(result:BackendModelUUIDResult) : void {
+	onCreateUUIDResult(result:BackendModelUUIDResult) : void {
 		this.router.navigate(['/showArticle', {uuid:result.uuid}]);
 	}
 

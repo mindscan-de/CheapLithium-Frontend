@@ -19,7 +19,6 @@ export class CreateKBArticleDialogComponent  {
 	onCreate() : void {
 		// TODO use the backendservice to create / if success then close the modalwith the result.
 		// FOR NOW we will stick with returning the observable
-		
-		this.activeModal.close('done')
+		this.activeModal.close( this.backendService.createKBArticle( this.kbaPageTitle, this.kbaPageSummary, this.kbaPageContent ) )
 	}
 }
