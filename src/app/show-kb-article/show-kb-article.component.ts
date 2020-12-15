@@ -76,12 +76,24 @@ export class ShowKBArticleComponent implements OnInit {
 				let newKbArticleValues:BackendKBArticle = result;
 				
 				// TODO: do something with the new data values ...
+				this.backendService.updateKBArticle(
+					this.article.uuid, 
+					newKbArticleValues.pagetitle, 
+					newKbArticleValues.pagesummary,
+					newKbArticleValues.pagecontent).subscribe(
+						data => this.onUpdateUUIDResult(data),
+						error => this.onError(error)
+					)
 				
 			}, (reason)=> {
 			// something else was clicked...
 		});
 	}
 
+	onUpdateUUIDResult(result:BackendModelUUIDResult) : void {
+		// load the article if changed.
+		this.retrieveArticle(result.uuid)
+	}
 
 	onCreateUUIDResult(result:BackendModelUUIDResult) : void {
 		this.router.navigate(['/showArticle', {uuid:result.uuid}]);
