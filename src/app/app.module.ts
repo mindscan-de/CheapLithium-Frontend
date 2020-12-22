@@ -27,6 +27,7 @@ import { ModelsComponent } from './models/models.component';
 import { StartDecisionModelDialogComponent } from './models/start-decision-model-dialog/start-decision-model-dialog.component';
 import { EditKBArticleDialogComponent } from './show-kb-article/edit-kbarticle-dialog/edit-kbarticle-dialog.component';
 import { CreateKBArticleDialogComponent } from './show-kb-article/create-kbarticle-dialog/create-kbarticle-dialog.component';
+import { ShowDecisionThreadReportComponent } from './show-decision-thread-report/show-decision-thread-report.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CreateKBArticleDialogComponent } from './show-kb-article/create-kbartic
 	ModelsComponent,
 	StartDecisionModelDialogComponent,
 	EditKBArticleDialogComponent,
-	CreateKBArticleDialogComponent
+	CreateKBArticleDialogComponent,
+	ShowDecisionThreadReportComponent
   ],
   imports: [
     BrowserModule,
