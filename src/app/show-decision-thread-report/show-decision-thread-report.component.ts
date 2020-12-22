@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BackendDecisionThread } from '../backend-services/backend-model/backend-decision-thread';
+import { BackendDecisionThreadReport } from '../backend-services/backend-model/backend-decision-thread-report';
+import { BackendDecisionThreadReportItem } from '../backend-services/backend-model/backend-decision-thread-report-item';
+
 
 import { DecisionThreadBackendService } from '../backend-services/decision-thread-backend.service';
 
@@ -13,6 +16,7 @@ import { DecisionThreadBackendService } from '../backend-services/decision-threa
 export class ShowDecisionThreadReportComponent implements OnInit {
 	
 	public decisionThread: BackendDecisionThread = new BackendDecisionThread();
+	public decisionThreadReportItems: BackendDecisionThreadReportItem[] = [];
 
 	constructor(private activatedRoute : ActivatedRoute, private backendThreadService: DecisionThreadBackendService) { }
 
@@ -31,11 +35,24 @@ export class ShowDecisionThreadReportComponent implements OnInit {
 	
     onDecisionThreadLoaded(thread: BackendDecisionThread) : void {
 		this.decisionThread = thread;
+		
+		this.backendThreadService.getDecisionThreadReport(thread.uuid).subscribe(
+			data => this.onDecisionThreadReportLoaded(data),
+			error => this.onDecisionThreadReportFailed(error)
+		);
     }
+
+	onDecisionThreadReportLoaded ( report: BackendDecisionThreadReport ): void {
+		this.decisionThreadReportItems = report.reportitems;
+	}
+	
+	onDecisionThreadReportFailed(error: any) : void {
+		console.log(error);
+	}
 	
     onDecisionThreadFailed(error: any) : void {
         console.log(error);
     }
 	
-
+	
 }
