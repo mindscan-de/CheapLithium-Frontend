@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { BackendDecisionThread } from './backend-model/backend-decision-thread';
 import { BackendDecisionThreadIndex } from './backend-model/backend-decision-thread-index';
 import { BackendThreadUUIDResult } from './backend-model/backend-thread-uuidresult';
-
+import { BackendDecisionThreadReport } from './backend-model/backend-decision-thread-report';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,6 @@ export class DecisionThreadBackendService {
 	private _decisionThreadLocation          = '/CheapLithium/rest/getDecisionThread/';
 	private _decisionThreadListLocation      = '/CheapLithium/rest/getDecisionThreadList';
 	private _decisionThreadStartLocation     = '/CheapLithium/rest/startDecisionThread';
-	
-	// TODO: this is the reporting Backend URL - which converts a thread into a report, using the logged transitions
 	private _decisionThreadReportLocation    = '/CheapLithium/rest/getDecisionThreadReport/';
 	
 
@@ -43,5 +41,11 @@ export class DecisionThreadBackendService {
 		// add more data?
 		
 		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadStartLocation, formdata);
+	}
+	
+	getDecisionThreadReport( uuid:string ) : Observable<BackendDecisionThreadReport> {
+		let httpParameters = new HttpParams();
+		
+		return this.httpClient.get<BackendDecisionThreadReport>( this._decisionThreadReportLocation + uuid, {params:httpParameters});
 	}
 }
