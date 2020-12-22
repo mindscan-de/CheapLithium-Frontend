@@ -1,1 +1,26 @@
-<p>show-decision-thread-report works!</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm my-5">
+			<h1 class="display-3 font-weight-normal" align="center">Show Decision Thread</h1>
+		</div>
+	</div>
+
+	<app-main-navigation></app-main-navigation>
+		<div class="row">
+		<div class="col-lg mt-1">
+			<h2>decisionModel.displayname / decisionModel.version</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg mt-1">
+			<div class="btn-toolbar float-right" role="toolbar" >
+				<div class="btn-group ml-2" role="group">
+					<a type="button" class="btn btn-outline-primary" routerLink="/showDecisionThread/{{decisionThread.uuid}}">show thread</a>
+					<a type="button" class="btn btn-outline-primary" routerLink="/showDecisionModel/{{decisionThread.currentmodel}}">show full model</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
