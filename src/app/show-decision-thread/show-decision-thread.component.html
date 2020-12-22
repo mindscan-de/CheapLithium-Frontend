@@ -15,14 +15,16 @@
 	
 	<div class="row">
 		<div class="col-lg mt-1">
+			<div class="btn-toolbar float-right" role="toolbar" >
+				<div class="btn-group ml-2" role="group">
+					<a type="button" class="btn btn-outline-primary" routerLink="/showDecisionThreadReport/{{decisionThread.uuid}}">show thread report</a>
+					<a type="button" class="btn btn-outline-primary" routerLink="/showDecisionModel/{{decisionThread.currentmodel}}">show full model</a>
+				</div>
+			</div>
+		
 			<h3>CurrentState</h3>
 			<ul class="list-group">
 				<li class="list-group-item">
-					<div class="btn-toolbar float-right" role="toolbar" >
-						<div class="btn-group ml-2" role="group">
-							<a type="button" class="btn btn-outline-primary" routerLink="/showDecisionModel/{{decisionThread.currentmodel}}">show full model</a>
-						</div>
-					</div>
 					<h4>{{currentNodeData.name}} <span class="badge badge-success">{{currentNodeData.type}}</span></h4> 
 					
 					show the basic content of the knowledge base article here
