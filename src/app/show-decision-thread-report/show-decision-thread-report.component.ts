@@ -17,6 +17,7 @@ export class ShowDecisionThreadReportComponent implements OnInit {
 	
 	public decisionThread: BackendDecisionThread = new BackendDecisionThread();
 	public decisionThreadReportItems: BackendDecisionThreadReportItem[] = [];
+	public combinedReport: string = "";
 
 	constructor(private activatedRoute : ActivatedRoute, private backendThreadService: DecisionThreadBackendService) { }
 
