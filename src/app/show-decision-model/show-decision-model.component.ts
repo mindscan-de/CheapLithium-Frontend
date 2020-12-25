@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // additional components
 import {CreateDecisionModelDialogComponent} from './create-decision-model-dialog/create-decision-model-dialog.component';
@@ -15,6 +15,7 @@ import {EditDecisionNodeTransitionDialogComponent} from './edit-decision-node-tr
 
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
+import { KnowledgeBaseBackendService } from '../backend-services/knowledge-base-backend.service';
 
 // TODO: import the m2m transformation for translating the backend model to the ui model
 
@@ -22,6 +23,7 @@ import { DecisionModelBackendService } from '../backend-services/decision-model-
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
 import { BackendModelUUIDResult } from '../backend-services/backend-model/backend-model-uuidresult';
 import { BackendDecisionModelDecisionNode } from '../backend-services/backend-model/backend-decision-model-decision-node';
+import { BackendKBArticleIndex } from '../backend-services/backend-model/backend-kb-article-index';
 
 @Component({
   selector: 'app-show-decision-model',
@@ -32,13 +34,19 @@ export class ShowDecisionModelComponent implements OnInit {
 	
 	public decisionModel: BackendDecisionModel = new BackendDecisionModel();
 	public decisionNodeMap: Map<string,BackendDecisionModelDecisionNode> = new Map();
+	public articleIndex : BackendKBArticleIndex = new BackendKBArticleIndex();
 
-	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private modalService: NgbModal) { }
+	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private articleService: KnowledgeBaseBackendService , private modalService: NgbModal) { }
 
 	ngOnInit(): void {
 		var uuid = this.activatedRoute.snapshot.params['uuid'];
 		
 		this.retrieveModel(uuid);
+		
+		this.articleService.getKBArticleList().subscribe(
+			data => this.onArticleIndexLoaded(data),
+			error => this.onArticleIndexFailed(error)
+		);
 	}
 	
 	retrieveModel(uuid:string) : void {
@@ -46,6 +54,10 @@ export class ShowDecisionModelComponent implements OnInit {
 			data => this.onDecisionModelLoaded(data),
 			error => this.onDecisionModelFailed(error)
 		);
+	}
+	
+	onArticleIndexLoaded( articleIndex: BackendKBArticleIndex): void {
+		this.articleIndex = articleIndex;
 	}
 	
 	onDecisionModelLoaded( model:BackendDecisionModel ): void {
@@ -63,6 +75,10 @@ export class ShowDecisionModelComponent implements OnInit {
 		console.log(error);
 	}
 	
+	onArticleIndexFailed( error: any) : void {
+		console.log(error);
+	}
+	
 	
 	onCreateNode(dmuuid:string):void {
 		// open a modal dialog to ask, what kind of node, (start, end, hit, mit, imp, invoke)
@@ -70,6 +86,7 @@ export class ShowDecisionModelComponent implements OnInit {
 		const modalref = this.modalService.open(CreateDecisionNodeDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
 		
 		modalref.componentInstance.setDecisionModelUUID(dmuuid);
+		modalref.componentInstance.setArticles(this.articleIndex)
 		
 		modalref.result.then((result) => {
 			result.subscribe(

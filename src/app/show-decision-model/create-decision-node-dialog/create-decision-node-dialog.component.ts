@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/Observable';
 
 // backend Service
 import { DecisionModelBackendService } from '../../backend-services/decision-model-backend.service';
 
 // Backend Model
+import { BackendKBArticle } from '../../backend-services/backend-model/backend-kb-article';
+import { BackendKBArticleIndex } from '../../backend-services/backend-model/backend-kb-article-index';
 import { BackendModelUUIDResult } from '../../backend-services/backend-model/backend-model-uuidresult';
 
 
@@ -19,15 +22,21 @@ export class CreateDecisionNodeDialogComponent  {
 	public dnName: string = "";
 	public dnType: string = "hit";
 	public dnKBArticle: string = "";
+	public articles: BackendKBArticle[] = [];
 
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
 	
 	setDecisionModelUUID(dmuuid : string) : void {
 		this.dmuuid = dmuuid;
 	}
+	
+	setArticles(articleIndex: BackendKBArticleIndex): void {
+		// uuid + Title + pagesummary
+		this.articles = articleIndex.result;
+	}
 
 	onCreate() : void {
-		var observeable = this.backendService.createDecisionNodeForModel(this.dnName, this.dnType, this.dnKBArticle, this.dmuuid) 
+		let observeable:Observable<BackendModelUUIDResult> = this.backendService.createDecisionNodeForModel(this.dnName, this.dnType, this.dnKBArticle, this.dmuuid) 
 		
 		this.activeModal.close(observeable);
 	}
