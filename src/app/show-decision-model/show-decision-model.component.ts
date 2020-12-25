@@ -154,6 +154,7 @@ export class ShowDecisionModelComponent implements OnInit {
 		const modalref = this.modalService.open(EditDecisionNodeDialogComponent,  {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' });
 		
 		modalref.componentInstance.setDecisionNodeData(modeluuid, node);
+		modalref.componentInstance.setArticles(this.articleIndex)
 
 		modalref.result.then((result) => {
 			let updatedNode:BackendDecisionModelDecisionNode = result;
