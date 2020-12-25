@@ -33,7 +33,18 @@
 				<li *ngFor="let node of decisionModel.nodes; let i = index" class="list-group-item" >
 					<button type="button" class="btn btn-outline-secondary float-right" (click)="onClickDecisionNode(decisionModel.uuid,node)">edit</button>
 					<h4>{{node.name}} <span class="badge" [ngClass] = "{'badge-primary': node.type==='start', 'badge-success': node.type==='hit', 'badge-danger': node.type==='end', 'badge-info': node.type==='mit'}">{{node.type}}</span></h4>
-					<p>{{node.kbarticle}}</p>
+					<div *ngIf="node.kbarticle == ''; then thenBlock else elseBlock" class="card"></div>
+					<ng-template #thenBlock>
+						<div class="card-body">
+							<!-- No Article given: create new related article --> 
+						</div>
+					</ng-template>
+					<ng-template #elseBlock>
+						<div class="card-body">
+							<p>{{node.kbarticle}}</p>
+							Article should be shown here...: edit related article 
+						</div>
+					</ng-template>
 					<button type="button" class="btn btn-outline-secondary float-right ml-1" (click)="onAddDecisionNodeTransition(decisionModel.uuid ,node)">add</button>
 					<ul class="list-group">
 						<li *ngFor="let nextAction of node.nextactions; let i = index" class="list-group-item list-group-item-action" (click)="onClickDecisionNodeTransition(decisionModel.uuid, node, i)" >
