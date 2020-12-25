@@ -5,7 +5,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DecisionModelBackendService } from '../../backend-services/decision-model-backend.service';
 
 // Backend Model
-import { BackendModelUUIDResult } from '../../backend-services/backend-model/backend-model-uuidresult';
+import { BackendKBArticle } from '../../backend-services/backend-model/backend-kb-article';
+import { BackendKBArticleIndex } from '../../backend-services/backend-model/backend-kb-article-index';
 import { BackendDecisionModelDecisionNode } from '../../backend-services/backend-model/backend-decision-model-decision-node';
 
 
@@ -21,7 +22,8 @@ export class EditDecisionNodeDialogComponent  {
 	
 	public dnName: string = "";
 	public dnType: string = "";
-	public dnKBAcrticle: string = "";
+	public dnKBArticle: string = "";
+	public articles: BackendKBArticle[] = [];
 
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
 	
@@ -31,8 +33,14 @@ export class EditDecisionNodeDialogComponent  {
 		
 		this.dnName = decisionNode.name;
 		this.dnType = decisionNode.type;
-		this.dnKBAcrticle = decisionNode.kbarticle;
+		this.dnKBArticle = decisionNode.kbarticle;
 	}
+	
+	
+	setArticles(articleIndex: BackendKBArticleIndex): void {
+		this.articles = articleIndex.result;
+	}
+	
 	
 	onUpdate() : void {
 		let updatedNode = new BackendDecisionModelDecisionNode();
@@ -40,7 +48,7 @@ export class EditDecisionNodeDialogComponent  {
 		updatedNode.uuid = this.decisionNode.uuid;
 		updatedNode.name = this.dnName;
 		updatedNode.type = this.dnType;
-		updatedNode.kbarticle = this.dnKBAcrticle;
+		updatedNode.kbarticle = this.dnKBArticle;
 		
 		this.activeModal.close(updatedNode);
 	}

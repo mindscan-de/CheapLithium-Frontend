@@ -13,6 +13,15 @@
 	</div>
 	<div class="input-group mb-3">
 		<div class="input-group-prepend">
+    		<span class="input-group-text">KB-Article</span>
+  		</div>
+  		<select class="custom-select" [(ngModel)]="dnKBArticle">
+	  		<option value="">Empty</option>
+	  		<option *ngFor="let article of articles" value="{{article.uuid}}">{{article.pagetitle}}</option>
+  		</select>
+	</div>
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
     		<span class="input-group-text">Type</span>
   		</div>
   		<select class="custom-select" [(ngModel)]="dnType">
@@ -23,7 +32,6 @@
 	  		<!-- INVOKE AND IMPLICATION -->
   		</select>
 	</div>
-	<!-- @TODO: KB ARTICLE -->
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onUpdate()">Update</button>
