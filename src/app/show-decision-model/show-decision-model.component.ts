@@ -23,6 +23,7 @@ import { KnowledgeBaseBackendService } from '../backend-services/knowledge-base-
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
 import { BackendModelUUIDResult } from '../backend-services/backend-model/backend-model-uuidresult';
 import { BackendDecisionModelDecisionNode } from '../backend-services/backend-model/backend-decision-model-decision-node';
+import { BackendKBArticle } from '../backend-services/backend-model/backend-kb-article';
 import { BackendKBArticleIndex } from '../backend-services/backend-model/backend-kb-article-index';
 
 @Component({
@@ -34,6 +35,7 @@ export class ShowDecisionModelComponent implements OnInit {
 	
 	public decisionModel: BackendDecisionModel = new BackendDecisionModel();
 	public decisionNodeMap: Map<string,BackendDecisionModelDecisionNode> = new Map();
+	public articleMap: Map<string,BackendKBArticle> = new Map();
 	public articleIndex : BackendKBArticleIndex = new BackendKBArticleIndex();
 
 	constructor( private activatedRoute : ActivatedRoute, private backendService: DecisionModelBackendService, private articleService: KnowledgeBaseBackendService , private modalService: NgbModal) { }
@@ -58,6 +60,14 @@ export class ShowDecisionModelComponent implements OnInit {
 	
 	onArticleIndexLoaded( articleIndex: BackendKBArticleIndex): void {
 		this.articleIndex = articleIndex;
+		
+		var newMap = new Map<string, BackendKBArticle>();
+		
+		articleIndex.result.forEach( function (article) {
+			newMap.set(article.uuid, article);
+		});
+		
+		this.articleMap = newMap;
 	}
 	
 	onDecisionModelLoaded( model:BackendDecisionModel ): void {
@@ -221,6 +231,10 @@ export class ShowDecisionModelComponent implements OnInit {
 		// either redirect via parameter or update current model (depends if currentmodel==result.uuid), 
 		// but via parameter (activatedroute) is better, because the browsers back button can be used.
 		this.retrieveModel(result.uuid);
+	}
+	
+	onEditArticle(article:BackendKBArticle) : void {
+		console.log(article)
 	}
 	
 	onError(error):void {
