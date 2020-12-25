@@ -41,14 +41,16 @@
 					</ng-template>
 					<ng-template #elseBlock>
 						<div class="card mb-1 mt-3">
-							<div class="card-body ">
+							<div class="card-body">
 								<div class="btn-toolbar float-right" role="toolbar" >
 									<div class="btn-group ml-2" role="group">
 										<button type="button" class="btn btn-outline-secondary" (click)="onEditArticle(articleMap.get(node.kbarticle))">edit article</button>								
 									</div>
 								</div>
 								<h5>{{articleMap.get(node.kbarticle)?.pagetitle}}</h5>
-								{{articleMap.get(node.kbarticle)?.pagesummary}} 
+								<div class="text-muted">
+								{{articleMap.get(node.kbarticle)?.pagesummary}}
+								</div> 
 							</div>
 						</div>
 					</ng-template>
