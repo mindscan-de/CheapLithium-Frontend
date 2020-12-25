@@ -31,7 +31,6 @@ export class CreateDecisionNodeDialogComponent  {
 	}
 	
 	setArticles(articleIndex: BackendKBArticleIndex): void {
-		// uuid + Title + pagesummary
 		this.articles = articleIndex.result;
 	}
 
