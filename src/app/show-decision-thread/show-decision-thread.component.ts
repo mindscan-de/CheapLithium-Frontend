@@ -10,6 +10,9 @@ import { BackendDecisionThread } from '../backend-services/backend-model/backend
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 import { DecisionThreadBackendService } from '../backend-services/decision-thread-backend.service';
+import { KnowledgeBaseBackendService } from '../backend-services/knowledge-base-backend.service';
+import { BackendKBArticleIndex } from '../backend-services/backend-model/backend-kb-article-index';
+import { BackendKBArticle } from '../backend-services/backend-model/backend-kb-article';
 
 @Component({
   selector: 'app-show-decision-thread',
@@ -22,14 +25,39 @@ export class ShowDecisionThreadComponent implements OnInit {
 	public decisionThreadTmp: BackendDecisionThread; 
 	public decisionModel: BackendDecisionModel = new BackendDecisionModel();
 	public decisionNodeMap: Map<string,BackendDecisionModelDecisionNode> = new Map(); 
-	public currentNodeData: BackendDecisionModelDecisionNode = new BackendDecisionModelDecisionNode(); 
+	public currentNodeData: BackendDecisionModelDecisionNode = new BackendDecisionModelDecisionNode();
+	
+    public articleIndex : BackendKBArticleIndex = new BackendKBArticleIndex();
+	public articleMap: Map<string,BackendKBArticle> = new Map();
+    public currentArticle: BackendKBArticle = new BackendKBArticle();
 
-	constructor( private activatedRoute : ActivatedRoute, private backendModelService: DecisionModelBackendService, private backendThreadService: DecisionThreadBackendService,  private modalService: NgbModal) { }
+	constructor( private activatedRoute : ActivatedRoute, private backendModelService: DecisionModelBackendService, private backendThreadService: DecisionThreadBackendService, private articleService:KnowledgeBaseBackendService,  private modalService: NgbModal) { }
 
 	ngOnInit(): void {
 		var threaduuid = this.activatedRoute.snapshot.params['uuid'];
 		
 		this.retrieveThread(threaduuid);
+		this.retrieveArticles();
+	}
+	
+    retrieveArticles() : void {
+		this.articleService.getKBArticleList().subscribe(
+			data => this.onArticleIndexLoaded(data),
+			error => this.onArticleIndexFailed(error)
+		);
+    }
+
+	onArticleIndexLoaded( articleIndex: BackendKBArticleIndex): void {
+		this.articleIndex = articleIndex;
+		
+		var newMap = new Map<string, BackendKBArticle>();
+		
+		articleIndex.result.forEach( function (article) {
+			newMap.set(article.uuid, article);
+		});
+		
+		this.articleMap = newMap;
+		this.setCurrentArticle();
 	}
 	
 	retrieveThread(threaduuid: string) : void {
@@ -62,7 +90,22 @@ export class ShowDecisionThreadComponent implements OnInit {
 		this.decisionModel = model;
 		this.decisionThread = this.decisionThreadTmp;
 		this.currentNodeData = newMap.get(this.decisionThread.currentnode);
+
+		this.setCurrentArticle();		
 	}
+	
+    setCurrentArticle() {
+		if(!this.articleMap) {
+			return;
+		}
+		if(!this.currentNodeData) {
+			return;
+		}
+	
+        this.currentArticle = this.articleMap.get(this.currentNodeData.kbarticle);
+    }
+	
+	
 
 	
     onDecisionThreadFailed(error: any) : void {
@@ -72,6 +115,11 @@ export class ShowDecisionThreadComponent implements OnInit {
 	onDecisionModelFailed( error:any ) : void {
 		console.log(error);
 	}
+	
+	onArticleIndexFailed( error: any) : void {
+		console.log(error);
+	}
+
 
 
 }

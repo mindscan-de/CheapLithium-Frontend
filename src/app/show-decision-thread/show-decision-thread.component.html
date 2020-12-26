@@ -27,11 +27,40 @@
 				<li class="list-group-item">
 					<h4>{{currentNodeData.name}} <span class="badge badge-success">{{currentNodeData.type}}</span></h4> 
 					
-					show the basic content of the knowledge base article here
-					provide a dialog  which provides many more information
 					
-					* TODO: only HIT nodes will provide the input field
-					* STARTNODES will be executed and the only transition will be taken
+					<div *ngIf="currentNodeData.kbarticle == ''; then thenArticleBlock else elseArticleBlock" class="card"></div>
+					<ng-template #thenArticleBlock>
+						<div class="card-body">
+							<div class="text-muted">
+							Sorry, this decision node has no link to any further article. I guess you are on your own... for making that decision.
+							</div> 
+						
+							<!-- No Article given: say user, that no further instructions are available --> 
+						</div>
+					</ng-template>
+					<ng-template #elseArticleBlock>
+						<div class="card mb-1 mt-3">
+							<div class="card-body">
+								<div class="btn-toolbar float-right" role="toolbar" >
+									<div class="btn-group ml-2" role="group">
+										<a type="button" class="btn btn-outline-primary" href="/showArticle/{{currentNodeData.kbarticle}}" target="_blank">read</a>								
+									</div>
+								</div>
+								<h5>{{currentArticle.pagetitle}}</h5>
+								<div class="text-muted">
+								{{currentArticle.pagesummary}}
+								</div> 
+							</div>
+						</div>
+					</ng-template>
+					
+					<div class="card mb-1 mt-3">
+						<div class="card-body">
+							* TODO: render input fields according to all the signatures and such...
+							* TODO: only HIT nodes will provide the input field
+						</div>
+					</div>
+					
 					
 					<div class="container mt-2">
 						The next button will transfer the data and then execute the operation defined, then all transitions are tested, the first to be found true, will succeed
