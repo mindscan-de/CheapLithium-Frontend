@@ -12,29 +12,69 @@
 			<div class="btn-toolbar float-right mt-2" role="toolbar" >
 				<div class="btn-group ml-2" role="group">
 					<button type="button" class="btn btn-secondary" (click)="onCreateArticle()">Create article</button>
-					<button type="button" class="btn btn-secondary" (click)="onEditArticle()">Edit Article</button>
+					
 				</div>
 			</div>
-		
-			<h3>{{article.pagetitle}}</h3>
-			<p>Revision: {{article.revision}}</p>
-			<p>{{article.pagesummary}}</p>
+			
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="col-lg mt-2>">
-			<p>{{article.pagecontent}}</p>
-			<p>{{article.uuid}}</p>
+		<div class="col-lg mt-2">
+			<div class="card">
+				<div class="card-body">
+					<div class="btn-toolbar float-right mt-1" role="toolbar" >
+						<div class="btn-group ml-2" role="group">
+							<button type="button" class="btn btn-outline-secondary" (click)="onEditArticle()">Edit Article</button>
+						</div>
+					</div>
+					<h3>{{article.pagetitle}}</h3>
+				</div>
+			</div>
+			
+			<div class="card mt-1" >
+				<div class="card-header">Page Summary</div>
+				<div class="card-body">
+					<p class="card-text">{{article.pagesummary}}</p>
+				</div>
+			</div>
+			
+			<div class="card mt-1" >
+			<div class="card-header">Page Content</div>
+				<div class="card-body">
+					<p class="card-text">{{article.pagecontent}}</p>
+				</div>
+			</div>
+			
+			
 		</div>
-	</div>
+	</div>	
 	
 	<div class="row">
-		<div class="col-lg mt-2>">
-			<p>created: {{article.created}}</p>
-			<p>modified: {{article.modified}}</p>
+		<div class="col-lg-4">
+			<div class="card mt-1" >
+				<div class="card-header">Revision</div>
+				<div class="card-body">
+					<p>{{article.revision}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="card mt-1" >
+				<div class="card-header">Created</div>
+				<div class="card-body">
+					<p>{{article.created}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="card mt-1" >
+				<div class="card-header">Modified</div>
+				<div class="card-body">
+					<p>{{article.modified}}</p>
+				</div>
+			</div>
 		</div>
 	</div>
-	
 </div>
 
