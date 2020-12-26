@@ -25,8 +25,7 @@
 			<h3>CurrentState</h3>
 			<ul class="list-group">
 				<li class="list-group-item">
-					<h4>{{currentNodeData.name}} <span class="badge badge-success">{{currentNodeData.type}}</span></h4> 
-					
+					<h4>{{currentNodeData.name}} <span class="badge" [ngClass] = "{'badge-primary': currentNodeData.type==='start', 'badge-success': currentNodeData.type==='hit', 'badge-danger': currentNodeData.type==='end', 'badge-info': currentNodeData.type==='mit'}">{{currentNodeData.type}}</span></h4>
 					
 					<div *ngIf="currentNodeData.kbarticle == ''; then thenArticleBlock else elseArticleBlock" class="card"></div>
 					<ng-template #thenArticleBlock>
