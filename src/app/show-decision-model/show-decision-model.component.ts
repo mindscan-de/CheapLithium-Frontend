@@ -11,13 +11,12 @@ import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/cop
 import {EditDecisionModelDialogComponent} from './edit-decision-model-dialog/edit-decision-model-dialog.component';
 import {EditDecisionNodeDialogComponent} from './edit-decision-node-dialog/edit-decision-node-dialog.component';
 import {EditDecisionNodeTransitionDialogComponent} from './edit-decision-node-transition-dialog/edit-decision-node-transition-dialog.component';
-
+// foreign components
+import { EditKBArticleDialogComponent } from '../show-kb-article/edit-kbarticle-dialog/edit-kbarticle-dialog.component';
 
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 import { KnowledgeBaseBackendService } from '../backend-services/knowledge-base-backend.service';
-
-// TODO: import the m2m transformation for translating the backend model to the ui model
 
 // use the backendmodel
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
@@ -44,11 +43,15 @@ export class ShowDecisionModelComponent implements OnInit {
 		var uuid = this.activatedRoute.snapshot.params['uuid'];
 		
 		this.retrieveModel(uuid);
-		
+		this.retrieveArticles();
+	}
+	
+	retrieveArticles():void {
 		this.articleService.getKBArticleList().subscribe(
 			data => this.onArticleIndexLoaded(data),
 			error => this.onArticleIndexFailed(error)
 		);
+
 	}
 	
 	retrieveModel(uuid:string) : void {
@@ -234,7 +237,27 @@ export class ShowDecisionModelComponent implements OnInit {
 	}
 	
 	onEditArticle(article:BackendKBArticle) : void {
-		console.log(article)
+				const modalref = this.modalService.open(EditKBArticleDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.componentInstance.setDialogData(article);
+		
+		modalref.result.then(
+			(result)=> {
+				let newKbArticleValues:BackendKBArticle = result;
+				
+				this.articleService.updateKBArticle(
+					article.uuid, 
+					newKbArticleValues.pagetitle, 
+					newKbArticleValues.pagesummary,
+					newKbArticleValues.pagecontent).subscribe(
+						data => this.retrieveArticles(),
+						error => this.onError(error)
+					)
+				
+			}, (reason)=> {
+			// something else was clicked...
+		});
+
 	}
 	
 	onError(error):void {
