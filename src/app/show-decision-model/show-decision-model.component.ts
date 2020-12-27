@@ -237,9 +237,11 @@ export class ShowDecisionModelComponent implements OnInit {
 	}
 	
 	onEditArticle(article:BackendKBArticle) : void {
-				const modalref = this.modalService.open(EditKBArticleDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		const modalref = this.modalService.open(EditKBArticleDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
 		
-		modalref.componentInstance.setDialogData(article);
+		// use this method, because the content is not available in the article map, 
+		// therefore the truth has to be loaded by the edit dialog.
+		modalref.componentInstance.setDialogDataByUUID(article.uuid);
 		
 		modalref.result.then(
 			(result)=> {
