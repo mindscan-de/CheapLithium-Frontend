@@ -18,7 +18,7 @@ export class EditDecisionNodeTransitionDialogComponent  {
 	public dntName: string = "";
 	public dntTemplate: string = "";
 	public dntNextNode: string = ""; 
-	public dntTransitIf: string = "";
+	public dntGuard: string = "";
 	public dntNodeList: BackendDecisionModelDecisionNode[] = []; 
 	
 	constructor(public activeModal: NgbActiveModal) { }
@@ -29,7 +29,7 @@ export class EditDecisionNodeTransitionDialogComponent  {
 		this.dntName = transition.name;
 		this.dntTemplate = transition.template;
 		this.dntNextNode = transition.next;
-		this.dntTransitIf = transition.transitif;
+		this.dntGuard = transition.guard;
 	}
 
 	onUpdate() : void {
@@ -38,7 +38,7 @@ export class EditDecisionNodeTransitionDialogComponent  {
 		updatedTransition.name = this.dntName;
 		updatedTransition.next = this.dntNextNode;
 		updatedTransition.template = this.dntTemplate;
-		updatedTransition.transitif = this.dntTransitIf;
+		updatedTransition.guard = this.dntGuard;
 		
 		this.activeModal.close( updatedTransition );
 	}
