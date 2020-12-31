@@ -6,34 +6,27 @@
 </div>
 <div class="modal-body">
 
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Name</span>
-  		</div>
-  		<input type="text" class="form-control" [(ngModel)]="dntName">
+	<div class="form-row">
+		<div class="form-group col-lg-6">
+			<label for="inputTransitionName">Transition Name</label>
+			<input type="text" class="form-control" id="inputTransitionName" placeholder="Transition Name" [(ngModel)]="dntName">
+		</div>
+		<div class="form-group col-lg-6">
+			<label for="inputToTransition">Transit To</label>
+	  		<select class="custom-select" id="inputTransitionTo" [(ngModel)]="dntNextNode" >
+		  		<option *ngFor="let nextnode of dntNodeList"  value="{{nextnode.uuid}}">{{nextnode.name}}</option>
+  			</select>
+		</div>
 	</div>
 
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Template</span>
-  		</div>
-  		<textarea class="form-control" aria-label="With textarea" [(ngModel)]="dntTemplate"></textarea>
+	<div class="form-group">
+		<label for="inputTransitionGuard">Transition Guard</label>
+  		<textarea class="form-control" id="inputTransitionReportTemplate" [(ngModel)]="dntGuard"></textarea>
 	</div>
 	
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Guard</span>
-  		</div>
-  		<input type="text" class="form-control" [(ngModel)]="dntGuard">
-	</div>
-	
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">To</span>
-  		</div>
-  		<select class="custom-select" [(ngModel)]="dntNextNode">
-	  		<option *ngFor="let nextnode of dntNodeList"  value="{{nextnode.uuid}}">{{nextnode.name}}</option>
-  		</select>
+	<div class="form-group">
+		<label for="inputTransitionReportTemplate">Report Template</label>
+  		<textarea class="form-control" id="inputTransitionReportTemplate" aria-label="With textarea" [(ngModel)]="dntTemplate"></textarea>
 	</div>
 	
 </div>
