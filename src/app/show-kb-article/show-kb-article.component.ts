@@ -75,7 +75,6 @@ export class ShowKBArticleComponent implements OnInit {
 			(result)=> {
 				let newKbArticleValues:BackendKBArticle = result;
 				
-				// TODO: do something with the new data values ...
 				this.backendService.updateKBArticle(
 					this.article.uuid, 
 					newKbArticleValues.pagetitle, 
