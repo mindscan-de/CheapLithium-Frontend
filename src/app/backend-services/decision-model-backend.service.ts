@@ -19,6 +19,8 @@ export class DecisionModelBackendService {
 	private _createDecisionModelLocation    = '/CheapLithium/rest/createDecisionModel';
 	private _updateDecisionModelLocation    = '/CheapLithium/rest/updateDecisionModel';
 	private _persistDecisionModelLocation   = '/CheapLithium/rest/persistDecisionModel';
+	private _updateStartDataOfDecisionModelLocation = '/CheapLithium/rest/updateDecisionModelStartData';
+	
 	private _createDecisionNodeLocation     = '/CheapLithium/rest/createDecisionNode';
 	private _updateDecisionNodeLocation     = '/CheapLithium/rest/updateDecisionNode';
 	private _insertDecisionNodeTransitionLocation   = '/CheapLithium/rest/insertDecisionNodeTransition';
@@ -26,9 +28,7 @@ export class DecisionModelBackendService {
 	
 	// TODO: these BackendServices:
 	private _cloneDecisionModelLocation     = '/CheapLithium/rest/cloneDecisionModel';
-	// TODO: implement a way to set the start data.
-	private _updateStartDataOfDecisionModelLocation = '/CheapLithium/rest/updateDecisionModelStartData';
-	
+
 
 	constructor( private httpClient : HttpClient) { }
 
@@ -91,6 +91,17 @@ export class DecisionModelBackendService {
 
 		return this.httpClient.post<BackendModelUUIDResult>( this._updateDecisionModelLocation, formdata);
 	}
+	
+    updateStartConfiguration(uuid: string, startnode: string, startenvironment: string) : Observable<BackendModelUUIDResult> {
+    	let formdata = new FormData();
+
+		formdata.append("uuid", uuid);
+		formdata.append("startnode", startnode);
+		formdata.append("startenvironment", startenvironment);
+		
+		return this.httpClient.post<BackendModelUUIDResult>( this._updateStartDataOfDecisionModelLocation, formdata);
+    }
+	
 	
 	// NYI in backend
 	cloneDecisionModel(uuid:string, name:string, displayname: string, description:string, version:string) : Observable<BackendModelUUIDResult> {
@@ -156,4 +167,6 @@ export class DecisionModelBackendService {
 		
 		return this.httpClient.post<BackendModelUUIDResult>( this._updateDecisionNodeTransitionLocation, formdata);
 	}
+	
+	
 }

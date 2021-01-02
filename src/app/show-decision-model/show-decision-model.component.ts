@@ -271,7 +271,15 @@ export class ShowDecisionModelComponent implements OnInit {
 		
 		modalref.result.then(
 			(result)=> { 
-				// TODO: add the handling code here to update the backend decision model start configuration.
+				let newDecisionModelStartData:BackendDecisionModel = result;
+				
+				this.backendService.updateStartConfiguration(
+					this.decisionModel.uuid,
+					newDecisionModelStartData.startnode,
+					newDecisionModelStartData.startenvironment).subscribe(
+						data => this.onUUIDResult(data),
+						error => this.onDecisionModelFailed(error)
+					)
 			}, (reason)=> {
 			// something else was clicked...
 		});
