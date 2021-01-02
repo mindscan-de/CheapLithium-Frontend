@@ -5,30 +5,28 @@
   </button>
 </div>
 <div class="modal-body">
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Name</span>
-  		</div>
-  		<input type="text" class="form-control" [(ngModel)]="dmName">
+
+	<div class="form-row">
+		<div class="form-group col-lg-8">
+			<label for="inputModelName">Model Name (no spaces)</label>
+			<input type="text" class="form-control" id="inputModelName" placeholder="Model Name" [(ngModel)]="dmName">
+		</div>
+		<div class="form-group col-lg-4">
+			<label for="inputModelVersion">Model Version</label>
+			<input type="text" class="form-control" id="inputModelVersion" placeholder="Version" [(ngModel)]="dmVersion">
+		</div>
 	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Version</span>
-  		</div>
-  		<input type="text" class="form-control" [(ngModel)]="dmVersion">
+	
+	<div class="form-group">
+		<label for="inputModelDisplayName">Display Name</label>
+  		<input type="text" class="form-control" id="inputModelDisplayName" placeholder="Display Name" [(ngModel)]="dmDisplayName">
 	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Display Name</span>
-  		</div>
-  		<input type="text" class="form-control" [(ngModel)]="dmDisplayName">
+	
+	<div class="form-group">
+		<label for="inputModelDescription">Model Description</label>
+		<textarea class="form-control" id="inputModelDescription" rows="5" aria-label="With textarea" placeholder="Please describe here, what this model is for..." [(ngModel)]="dmDescription"></textarea>
 	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Description</span>
-  		</div>
-  		<textarea class="form-control" aria-label="With textarea" [(ngModel)]="dmDescription"></textarea>
-	</div>
+	
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onUpdate()">Update</button>
