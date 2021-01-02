@@ -11,6 +11,8 @@ import {CopyDecisionModelDialogComponent} from './copy-decision-model-dialog/cop
 import {EditDecisionModelDialogComponent} from './edit-decision-model-dialog/edit-decision-model-dialog.component';
 import {EditDecisionNodeDialogComponent} from './edit-decision-node-dialog/edit-decision-node-dialog.component';
 import {EditDecisionNodeTransitionDialogComponent} from './edit-decision-node-transition-dialog/edit-decision-node-transition-dialog.component';
+import {EditDecisionModelStartDataDialogComponent} from './edit-decision-model-start-data-dialog/edit-decision-model-start-data-dialog.component';
+
 // foreign components
 import { EditKBArticleDialogComponent } from '../show-kb-article/edit-kbarticle-dialog/edit-kbarticle-dialog.component';
 
@@ -260,6 +262,20 @@ export class ShowDecisionModelComponent implements OnInit {
 			// something else was clicked...
 		});
 
+	}
+	
+	onEditStartConfiguration() : void {
+		const modalref = this.modalService.open(EditDecisionModelStartDataDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.componentInstance.setDialogData( this.decisionModel, Array.from(this.decisionNodeMap.values()));
+		
+		modalref.result.then(
+			(result)=> { 
+				// TODO: add the handling code here to update the backend decision model start configuration.
+			}, (reason)=> {
+			// something else was clicked...
+		});
+		
 	}
 	
 	onError(error):void {
