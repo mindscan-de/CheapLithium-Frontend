@@ -9,6 +9,7 @@ export class BackendDecisionModel {
 	public description : string = "";
 	public version: string = "";
 	public startnode: string = "";
+	public startenvironment: string = "";
 	public nodes: BackendDecisionModelDecisionNode[] = [];
 	
 }
