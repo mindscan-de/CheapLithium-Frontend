@@ -17,6 +17,7 @@ export class DecisionModelBackendService {
 	private _decisionModelLocation          = '/CheapLithium/rest/getDecisionModel/';
 	private _decisionModelListLocation      = '/CheapLithium/rest/getDecisionModelList';
 	private _createDecisionModelLocation    = '/CheapLithium/rest/createDecisionModel';
+	private _updateDecisionModelLocation    = '/CheapLithium/rest/updateDecisionModel';
 	private _persistDecisionModelLocation   = '/CheapLithium/rest/persistDecisionModel';
 	private _createDecisionNodeLocation     = '/CheapLithium/rest/createDecisionNode';
 	private _updateDecisionNodeLocation     = '/CheapLithium/rest/updateDecisionNode';
@@ -24,8 +25,9 @@ export class DecisionModelBackendService {
 	private _updateDecisionNodeTransitionLocation   = '/CheapLithium/rest/updateDecisionNodeTransition';
 	
 	// TODO: these BackendServices:
-	private _updateDecisionModelLocation    = '/CheapLithium/rest/updateDecisionModel';
 	private _cloneDecisionModelLocation     = '/CheapLithium/rest/cloneDecisionModel';
+	// TODO: implement a way to set the start data.
+	private _updateStartDataOfDecisionModelLocation = '/CheapLithium/rest/updateDecisionModelStartData';
 	
 
 	constructor( private httpClient : HttpClient) { }
