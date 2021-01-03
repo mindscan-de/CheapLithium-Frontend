@@ -30,6 +30,12 @@
 	  		<option *ngFor="let article of articles" value="{{article.uuid}}">{{article.pagetitle}}</option>
   		</select>
 	</div>
+	
+	<div class="form-group">
+		<label for="inputNodeAction">Node Action</label>
+  		<textarea class="form-control" id="inputNodeAction" rows="6" [(ngModel)]="dnNodeAction"></textarea>
+	</div>
+	
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onUpdate()">Update</button>

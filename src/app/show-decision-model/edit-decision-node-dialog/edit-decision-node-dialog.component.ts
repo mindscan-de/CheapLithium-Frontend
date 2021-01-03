@@ -23,6 +23,7 @@ export class EditDecisionNodeDialogComponent  {
 	public dnName: string = "";
 	public dnType: string = "";
 	public dnKBArticle: string = "";
+	public dnNodeAction: string = "";
 	public articles: BackendKBArticle[] = [];
 
 	constructor(public activeModal: NgbActiveModal, private backendService : DecisionModelBackendService) { }
@@ -34,6 +35,7 @@ export class EditDecisionNodeDialogComponent  {
 		this.dnName = decisionNode.name;
 		this.dnType = decisionNode.type;
 		this.dnKBArticle = decisionNode.kbarticle;
+		this.dnNodeAction = decisionNode.nodeaction;
 	}
 	
 	
@@ -49,6 +51,7 @@ export class EditDecisionNodeDialogComponent  {
 		updatedNode.name = this.dnName;
 		updatedNode.type = this.dnType;
 		updatedNode.kbarticle = this.dnKBArticle;
+		updatedNode.nodeaction = this.dnNodeAction;
 		
 		this.activeModal.close(updatedNode);
 	}
