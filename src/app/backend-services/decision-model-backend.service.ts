@@ -66,7 +66,7 @@ export class DecisionModelBackendService {
 		return this.httpClient.post<BackendModelUUIDResult>(this._createDecisionNodeLocation, formdata);
 	}
 	
-	updateDecisionNodeForModel(dmuuid:string, dnuuid:string, name:string, type:string, kbarticle:string) : Observable<BackendModelUUIDResult> {
+	updateDecisionNodeForModel(dmuuid:string, dnuuid:string, name:string, type:string, kbarticle:string, nodeaction:string) : Observable<BackendModelUUIDResult> {
 		let formdata = new FormData();
 
 		// where		
@@ -76,6 +76,7 @@ export class DecisionModelBackendService {
 		formdata.append("name", name);
 		formdata.append("exectype", type);
 		formdata.append("kbarticle", kbarticle);
+		formdata.append("nodeaction", nodeaction);
 		
 		return this.httpClient.post<BackendModelUUIDResult>(this._updateDecisionNodeLocation, formdata);
 	}
