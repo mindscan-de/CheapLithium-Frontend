@@ -5,31 +5,29 @@
   </button>
 </div>
 <div class="modal-body">
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Name</span>
-  		</div>
-  		<input type="text" class="form-control" [(ngModel)]="dnName">
+
+	<div class="form-row">
+		<div class="form-group col-lg-8">
+			<label for="inputNodeName">Node Name</label>
+			<input type="text" class="form-control" id="inputModelName" placeholder="Node Name" [(ngModel)]="dnName">
+		</div>
+		<div class="form-group col-lg-4">
+			<label for="inputNodeType">Node Type</label>
+			<select class="custom-select" id="inputNodeType" [(ngModel)]="dnType">
+		  		<option value="start">Start</option>
+		  		<option value="end">End</option>
+		  		<option value="hit">Human Task</option>
+		  		<option value="mit">Machine Task</option>
+		  		<!-- INVOKE AND IMPLICATION -->
+  			</select>
+		</div>
 	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">KB-Article</span>
-  		</div>
-  		<select class="custom-select" [(ngModel)]="dnKBArticle">
+
+	<div class="form-group">
+		<label for="inputKBArticleReference">Knowledge Base Article Reference</label>
+  		<select class="custom-select" id="inputKBArticleReference" [(ngModel)]="dnKBArticle">
 	  		<option value="">Empty</option>
 	  		<option *ngFor="let article of articles" value="{{article.uuid}}">{{article.pagetitle}}</option>
-  		</select>
-	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-    		<span class="input-group-text">Type</span>
-  		</div>
-  		<select class="custom-select" [(ngModel)]="dnType">
-	  		<option value="start">Start</option>
-	  		<option value="end">End</option>
-	  		<option value="hit">Human Task</option>
-	  		<option value="mit">Machine Task</option>
-	  		<!-- INVOKE AND IMPLICATION -->
   		</select>
 	</div>
 </div>
