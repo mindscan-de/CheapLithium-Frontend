@@ -174,10 +174,7 @@ export class ShowDecisionModelComponent implements OnInit {
 		modalref.result.then((result) => {
 			let updatedNode:BackendDecisionModelDecisionNode = result;
 			
-			// TODO: fix the node action
-			let nodeaction : string = "" 
-			
-			this.backendService.updateDecisionNodeForModel(modeluuid, updatedNode.uuid, updatedNode.name, updatedNode.type, updatedNode.kbarticle, nodeaction ).subscribe(
+			this.backendService.updateDecisionNodeForModel(modeluuid, updatedNode.uuid, updatedNode.name, updatedNode.type, updatedNode.kbarticle, updatedNode.nodeaction ).subscribe(
 				data => this.onUUIDResult(data),
 				error => this.onDecisionModelFailed(error)
 			);
