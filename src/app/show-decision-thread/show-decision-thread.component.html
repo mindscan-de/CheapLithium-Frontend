@@ -74,7 +74,8 @@
 					<h5>The next possible states are</h5>
 					<ul class="list-group mt-1">
 						<li *ngFor="let decision of currentNodeData.nextactions" class="list-group-item">
-							if ({{decision.isTransition}}) ==&gt; <span class="badge badge-secondary">{{decisionNodeMap.get(decision.next)?.name}}</span>
+							<!-- TODO: shorten the guard / so to speak a short version of the guard before the first '{' -->
+							<span class="badge badge-secondary">{{decisionNodeMap.get(decision.next)?.name}}</span> &mdash; if ({{decision.guard}})
 						</li>
 					</ul>
 				</li>
