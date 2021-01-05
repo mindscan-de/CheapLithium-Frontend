@@ -15,6 +15,7 @@ export class DecisionThreadBackendService {
 	private _decisionThreadLocation          = '/CheapLithium/rest/getDecisionThread/';
 	private _decisionThreadListLocation      = '/CheapLithium/rest/getDecisionThreadList';
 	private _decisionThreadStartLocation     = '/CheapLithium/rest/startDecisionThread';
+	private _decisionThreadRetryLocation     = '/CheapLithium/rest/retryDecisionThread';
 	private _decisionThreadReportLocation    = '/CheapLithium/rest/getDecisionThreadReport/';
 	
 
@@ -43,6 +44,14 @@ export class DecisionThreadBackendService {
 		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadStartLocation, formdata);
 	}
 	
+	retryDecisionThread ( uuid: string ):Observable<BackendThreadUUIDResult> {
+		let formdata = new FormData();
+		
+		formdata.append("uuid", uuid);
+		
+		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadRetryLocation, formdata);
+	}
+		
 	getDecisionThreadReport( uuid:string ) : Observable<BackendDecisionThreadReport> {
 		let httpParameters = new HttpParams();
 		
