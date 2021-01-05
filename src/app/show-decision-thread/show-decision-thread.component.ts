@@ -94,7 +94,7 @@ export class ShowDecisionThreadComponent implements OnInit {
 		this.setCurrentArticle();		
 	}
 	
-    setCurrentArticle() {
+    setCurrentArticle() : void {
 		if(!this.articleMap) {
 			return;
 		}
@@ -106,7 +106,20 @@ export class ShowDecisionThreadComponent implements OnInit {
     }
 	
 	
-
+	onRetryThread() : void {
+		let uuid:string  = this.decisionThread.uuid;
+		
+		this.backendThreadService.retryDecisionThread(uuid).subscribe(
+			data=>{this.onDecisionThreadRetried(data.uuid)},
+			error=>{
+				// ignore
+			}
+		)
+	}
+	
+	onDecisionThreadRetried(thread_uuid) : void {
+		this.retrieveThread(this.decisionThread.uuid)
+	}
 	
     onDecisionThreadFailed(error: any) : void {
         console.log(error);
