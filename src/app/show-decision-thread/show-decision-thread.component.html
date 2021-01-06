@@ -80,6 +80,17 @@
 					</div>
 					
 					
+					<h4>The next possible states are</h4>
+					<ul class="list-group mt-1">
+						<li *ngFor="let decision of currentNodeData.nextactions" class="list-group-item">
+							<!-- TODO: shorten the guard / so to speak a short version of the guard before the first '{' -->
+							<span class="badge badge-secondary">{{decisionNodeMap.get(decision.next)?.name}}</span> &mdash; if ({{decision.guard}})
+						</li>
+					</ul>
+					
+				</li>
+				
+				<li class="list-group-item">
 					<div class="container mt-2">
 						<div class="btn-toolbar float-right" role="toolbar" >
 							<div class="btn-group ml-2" role="group">
@@ -88,16 +99,9 @@
 						</div>
 						The Button will cause the node to be evaluated and that all transitions are tested, the first to be found true, will succeed
 					</div>
-					
-					<h5>The next possible states are</h5>
-					<ul class="list-group mt-1">
-						<li *ngFor="let decision of currentNodeData.nextactions" class="list-group-item">
-							<!-- TODO: shorten the guard / so to speak a short version of the guard before the first '{' -->
-							<span class="badge badge-secondary">{{decisionNodeMap.get(decision.next)?.name}}</span> &mdash; if ({{decision.guard}})
-						</li>
-					</ul>
 				</li>
 			</ul>
+			
 		</div>
 	</div>
 
