@@ -7,6 +7,8 @@ import { BackendDecisionThreadIndex } from './backend-model/backend-decision-thr
 import { BackendThreadUUIDResult } from './backend-model/backend-thread-uuidresult';
 import { BackendDecisionThreadReport } from './backend-model/backend-decision-thread-report';
 
+import { BackendDecisionThreadInputUI } from './backend-model/backend-decision-thread-input-ui';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +19,7 @@ export class DecisionThreadBackendService {
 	private _decisionThreadStartLocation     = '/CheapLithium/rest/startDecisionThread';
 	private _decisionThreadRetryLocation     = '/CheapLithium/rest/retryDecisionThread';
 	private _decisionThreadReportLocation    = '/CheapLithium/rest/getDecisionThreadReport/';
-	
+	private _decisionThreadInputUILocation   = '/CheapLithium/rest/getDecisionThreadCurrentUserInterface';
 
 	constructor( private httpClient : HttpClient) { }
 
@@ -56,5 +58,13 @@ export class DecisionThreadBackendService {
 		let httpParameters = new HttpParams();
 		
 		return this.httpClient.get<BackendDecisionThreadReport>( this._decisionThreadReportLocation + uuid, {params:httpParameters});
+	}
+	
+	getDecisionThreadInputUI( uuid:string ) : Observable<BackendDecisionThreadInputUI> {
+		let formdata = new FormData();
+		
+		formdata.append("uuid", uuid);
+		
+		return this.httpClient.post<any>(this._decisionThreadInputUILocation, formdata);
 	}
 }
