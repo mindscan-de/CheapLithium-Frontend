@@ -53,11 +53,29 @@
 						</div>
 					</ng-template>
 					
-					<div class="card mb-1 mt-3">
+					<!--  TODO: Extract this function?-->
+					<div *ngIf="inputUIInterfaceLength!=0" class="card mb-1 mt-3">
+						<h5 class="card-header">Decsion Node Thread Data Input</h5>
 						<div class="card-body">
-							* TODO: render input fields according to all the signatures and such... <br/>
-							* TODO: only HIT nodes will provide the input field <br/>
-							* TODO: transfer form data and then continue the thread 
+							<div *ngFor="let inputElement of inputUIInterfaceItems" class="form-group">
+								<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+								<!-- TODO: maybe use a template, also implement a way to fill the data / bind the model -->
+								<input type="text" id="inputUIElement_{{inputElement.label}}" class="form-control">
+							</div>
+
+							<ul>
+								<li>TODO: render input fields according to all the signatures and such...</li>
+								<li>TODO: only HIT nodes will provide the input field</li>
+								<li>TODO: transfer form data and then continue the thread</li>
+							</ul>							
+														
+						</div>
+						<div class="card-footer">
+							<div class="btn-toolbar float-right" role="toolbar" >
+								<div class="btn-group ml-2" role="group">
+									<button type="button" class="btn btn-primary">commit thread data</button>
+								</div>
+							</div> 
 						</div>
 					</div>
 					

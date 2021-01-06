@@ -14,6 +14,9 @@ import { KnowledgeBaseBackendService } from '../backend-services/knowledge-base-
 import { BackendKBArticleIndex } from '../backend-services/backend-model/backend-kb-article-index';
 import { BackendKBArticle } from '../backend-services/backend-model/backend-kb-article';
 
+import { BackendDecisionThreadInputUI } from '../backend-services/backend-model/backend-decision-thread-input-ui';
+import { BackendDecisionThreadInputUIItem } from '../backend-services/backend-model/backend-decision-thread-input-ui-item';
+
 @Component({
   selector: 'app-show-decision-thread',
   templateUrl: './show-decision-thread.component.html',
@@ -30,6 +33,11 @@ export class ShowDecisionThreadComponent implements OnInit {
     public articleIndex : BackendKBArticleIndex = new BackendKBArticleIndex();
 	public articleMap: Map<string,BackendKBArticle> = new Map();
     public currentArticle: BackendKBArticle = new BackendKBArticle();
+
+	// inputUIInterface
+    public inputUIInterfaceLength: number = 0;
+    public inputUIInterfaceItems: BackendDecisionThreadInputUIItem[] = [];
+	public inputUIInterfaceValues: string[] = [];
 
 	constructor( private activatedRoute : ActivatedRoute, private backendModelService: DecisionModelBackendService, private backendThreadService: DecisionThreadBackendService, private articleService:KnowledgeBaseBackendService,  private modalService: NgbModal) { }
 
@@ -65,7 +73,19 @@ export class ShowDecisionThreadComponent implements OnInit {
 			data => this.onDecisionThreadLoaded(data),
 			error => this.onDecisionThreadFailed(error)
 		);
+		
+		this.backendThreadService.getDecisionThreadInputUI(threaduuid).subscribe(
+			data => this.onDecisionThreadInputProvided(data),
+			error => this.onDecisionThreadInputFailed(error)
+		);
 	}
+	
+
+    onDecisionThreadInputProvided(data: BackendDecisionThreadInputUI): void {
+        this.inputUIInterfaceLength = data.uiInputInterface.length;
+		this.inputUIInterfaceItems = data.uiInputInterface;
+		this.inputUIInterfaceValues = new Array<string>(this.inputUIInterfaceLength);
+    }
 	
     onDecisionThreadLoaded(thread: BackendDecisionThread) : void {
 		console.log(thread);
@@ -133,6 +153,9 @@ export class ShowDecisionThreadComponent implements OnInit {
 		console.log(error);
 	}
 
+    onDecisionThreadInputFailed(error: any): void {
+        console.log(error);
+    }
 
 
 }
