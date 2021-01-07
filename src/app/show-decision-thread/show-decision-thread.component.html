@@ -58,9 +58,18 @@
 						<h5 class="card-header">Decsion Node Thread Data Input</h5>
 						<div class="card-body">
 							<div *ngFor="let inputElement of inputUIInterfaceItems" class="form-group">
-								<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
-								<!-- TODO: maybe use a template, also implement a way to fill the data / bind the model -->
-								<input type="text" id="inputUIElement_{{inputElement.label}}" class="form-control">
+								<ng-container *ngIf="inputElement.type=='textfield'">
+									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+									<!-- TODO: also implement a way to fill the data / bind the model -->
+									<input type="text" id="inputUIElement_{{inputElement.label}}" class="form-control">
+								</ng-container>
+								<ng-container *ngIf="inputElement.type=='textarea'">
+									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+									<!-- TODO: also implement a way to fill the data / bind the model -->
+									<textarea class="form-control" id="inputUIElement_{{inputElement.label}}"></textarea>
+								</ng-container>
+								
+								
 							</div>
 
 							<ul>
