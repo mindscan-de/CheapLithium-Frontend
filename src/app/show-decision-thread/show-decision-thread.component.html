@@ -68,7 +68,14 @@
 									<!-- TODO: also implement a way to fill the data / bind the model -->
 									<textarea class="form-control" id="inputUIElement_{{inputElement.label}}"></textarea>
 								</ng-container>
-								
+								<ng-container *ngIf="inputElement.type=='yesnoselection'">
+									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+									<!-- TODO: also implement a way to fill the data / bind the model -->
+							  		<select class="custom-select" id="inputUIElement_{{inputElement.label}}" [(ngModel)]="dntNextNode" >
+										<option   value="no" selected>no</option>
+										<option   value="yes">yes</option>								  		
+						  			</select>
+								</ng-container>
 								
 							</div>
 
