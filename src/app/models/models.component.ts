@@ -5,12 +5,14 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 // import the dialogs used in this component
 import { StartDecisionModelDialogComponent } from './start-decision-model-dialog/start-decision-model-dialog.component';
+import { CreateDecisionModelDialogComponent } from '../show-decision-model/create-decision-model-dialog/create-decision-model-dialog.component';
 
 // import the backend service, which provides the decision model data
 import { DecisionModelBackendService } from '../backend-services/decision-model-backend.service';
 import { BackendDecisionModel } from '../backend-services/backend-model/backend-decision-model';
 import { BackendDecisionModelIndex } from '../backend-services/backend-model/backend-decision-model-index';
 import { BackendThreadUUIDResult } from '../backend-services/backend-model/backend-thread-uuidresult'; 
+import { BackendModelUUIDResult } from '../backend-services/backend-model/backend-model-uuidresult';
 
 
 @Component({
@@ -57,5 +59,30 @@ export class ModelsComponent implements OnInit {
 			(reason)=>{}
 		);
 	}
+	
+	onCreateModel():void {
+		const modalref = this.modalService.open(CreateDecisionModelDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.result.then((result) => {
+			result.subscribe(
+				data => this.onCreatedUUIDResult(data),
+				error => this.onError(error)
+			)
+		}, (reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		});
+	}
+	
+	onCreatedUUIDResult(result:BackendModelUUIDResult) : void {
+		console.log(result);
+
+		this.router.navigateByUrl("/showDecisionModel/"+result.uuid);
+	}
+
+
+	onError(error:any):void {
+		console.log(error)
+	}
+	
 
 }

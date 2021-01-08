@@ -6,9 +6,19 @@
 	</div>
 	
 	<app-main-navigation></app-main-navigation>
+
+	<div class="row">
+		<div class="col-lg">
+			<div class="btn-toolbar float-right mt-2" role="toolbar" >
+				<div class="btn-group ml-2" role="group">
+					<button type="button" class="btn btn-secondary" (click)="onCreateModel()" >Create Model</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<div class="row">
-		<div class="col-lg mt-1">
+		<div class="col-lg mt-2">
 			<ul class="list-group">
 				<li *ngFor="let item of decisionModelIndex.items;" class="list-group-item">
 					<div class="btn-toolbar float-right" role="toolbar" >
