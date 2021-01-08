@@ -59,17 +59,17 @@
 						<div class="card-body">
 							<div *ngFor="let inputElement of inputUIInterfaceItems" class="form-group">
 								<ng-container *ngIf="inputElement.type=='textfield'">
-									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.description}}</label>
 									<!-- TODO: also implement a way to fill the data / bind the model -->
 									<input type="text" id="inputUIElement_{{inputElement.label}}" class="form-control">
 								</ng-container>
 								<ng-container *ngIf="inputElement.type=='textarea'">
-									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.description}}</label>
 									<!-- TODO: also implement a way to fill the data / bind the model -->
 									<textarea class="form-control" id="inputUIElement_{{inputElement.label}}"></textarea>
 								</ng-container>
 								<ng-container *ngIf="inputElement.type=='yesnoselection'">
-									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.label}}</label>
+									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.description}}</label>
 									<!-- TODO: also implement a way to fill the data / bind the model -->
 							  		<select class="custom-select" id="inputUIElement_{{inputElement.label}}" [(ngModel)]="dntNextNode" >
 										<option value="no">no</option>
