@@ -76,7 +76,7 @@ export class ModelsComponent implements OnInit {
 	onCreatedUUIDResult(result:BackendModelUUIDResult) : void {
 		console.log(result);
 
-		this.router.navigate(['/showDecisionModel', {uuid:result.uuid}]);
+		this.router.navigateByUrl('/showDecisionModel/'+result.uuid);
 	}
 
 

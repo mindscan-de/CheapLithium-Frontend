@@ -95,7 +95,7 @@ export class ShowKBArticleComponent implements OnInit {
 	}
 
 	onCreateUUIDResult(result:BackendModelUUIDResult) : void {
-		this.router.navigate(['/showArticle', {uuid:result.uuid}]);
+		this.router.navigateByUrl('/showArticle/'+result.uuid);
 	}
 
 
