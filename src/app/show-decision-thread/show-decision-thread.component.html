@@ -79,14 +79,12 @@
 								
 							</div>
 
-							<ul>
-								<li>TODO: render input fields according to all the signatures and such...</li>
-								<li>TODO: only HIT nodes will provide the input field</li>
+ 							<ul>
 								<li>TODO: transfer form data and then continue the thread</li>
 							</ul>							
 														
 						</div>
-						<div class="card-footer">
+						<div class="card-body">
 							<div class="btn-toolbar float-right" role="toolbar" >
 								<div class="btn-group ml-2" role="group">
 									<button type="button" class="btn btn-primary">commit thread data</button>
@@ -100,7 +98,7 @@
 					<ul class="list-group mt-1">
 						<li *ngFor="let decision of currentNodeData.nextactions" class="list-group-item">
 							<!-- TODO: shorten the guard / so to speak a short version of the guard before the first '{' -->
-							<span class="badge badge-secondary">{{decisionNodeMap.get(decision.next)?.name}}</span> &mdash; if ({{decision.guard}})
+							<span class="badge badge-secondary">{{decisionNodeMap.get(decision.next)?.name}}</span> &mdash; when ( {{decision.guard}} )
 						</li>
 					</ul>
 					
