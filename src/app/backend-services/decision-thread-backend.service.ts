@@ -69,11 +69,23 @@ export class DecisionThreadBackendService {
 		return this.httpClient.post<any>(this._decisionThreadInputUILocation, formdata);
 	}
 	
-	decideHITNodeOnDecisionThead(uuid: string, inputdata:Map<String,Object>) : Observable<BackendThreadUUIDResult> {
+	
+	
+	decideHITNodeOnDecisionThead(uuid: string, inputdata:Map<string,string>) : Observable<BackendThreadUUIDResult> {
 		let formdata = new FormData();
+
+		// FUKKEN Workaround...		
+		const mapToObj = m => {
+			  return Array.from(m).reduce((obj, [key, value]) => {
+			    obj[key] = value;
+			    return obj;
+			  }, {});
+			};
+			
+		let dict=JSON.stringify(mapToObj(inputdata));
 		
 		formdata.append("uuid", uuid);
-		formdata.append("hitDecision", JSON.stringify(inputdata));
+		formdata.append("hitDecision", dict);
 		
 		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadHitDecideLocation, formdata);
 	}
