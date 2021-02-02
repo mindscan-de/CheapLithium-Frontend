@@ -57,21 +57,21 @@
 					<div *ngIf="inputUIInterfaceLength!=0" class="card mb-1 mt-3">
 						<h5 class="card-header">Decsion Node Thread Data Input</h5>
 						<div class="card-body">
-							<div *ngFor="let inputElement of inputUIInterfaceItems" class="form-group">
+							<div *ngFor="let inputElement of inputUIInterfaceItems;  index as i;" class="form-group">
 								<ng-container *ngIf="inputElement.type=='textfield'">
 									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.description}}</label>
 									<!-- TODO: also implement a way to fill the data / bind the model -->
-									<input type="text" id="inputUIElement_{{inputElement.label}}" class="form-control">
+									<input type="text" id="inputUIElement_{{inputElement.label}}" class="form-control" [(ngModel)]="inputUIInterfaceValues[i]">
 								</ng-container>
 								<ng-container *ngIf="inputElement.type=='textarea'">
 									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.description}}</label>
 									<!-- TODO: also implement a way to fill the data / bind the model -->
-									<textarea class="form-control" id="inputUIElement_{{inputElement.label}}"></textarea>
+									<textarea class="form-control" id="inputUIElement_{{inputElement.label}}" [(ngModel)]="inputUIInterfaceValues[i]"></textarea>
 								</ng-container>
 								<ng-container *ngIf="inputElement.type=='yesnoselection'">
 									<label for="inputUIElement_{{inputElement.label}}">{{inputElement.description}}</label>
 									<!-- TODO: also implement a way to fill the data / bind the model -->
-							  		<select class="custom-select" id="inputUIElement_{{inputElement.label}}" [(ngModel)]="dntNextNode" >
+							  		<select class="custom-select" id="inputUIElement_{{inputElement.label}}" [(ngModel)]="inputUIInterfaceValues[i]" >
 										<option value="no">no</option>
 										<option value="yes">yes</option>								  		
 						  			</select>
@@ -87,7 +87,7 @@
 						<div class="card-body">
 							<div class="btn-toolbar float-right" role="toolbar" >
 								<div class="btn-group ml-2" role="group">
-									<button type="button" class="btn btn-primary">commit thread data</button>
+									<button type="button" class="btn btn-primary" (click)="commitThreadData()">commit thread data</button>
 								</div>
 							</div> 
 						</div>

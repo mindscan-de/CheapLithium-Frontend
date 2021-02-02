@@ -84,7 +84,7 @@ export class ShowDecisionThreadComponent implements OnInit {
     onDecisionThreadInputProvided(data: BackendDecisionThreadInputUI): void {
         this.inputUIInterfaceLength = data.uiInputInterface.length;
 		this.inputUIInterfaceItems = data.uiInputInterface;
-		this.inputUIInterfaceValues = new Array<string>(this.inputUIInterfaceLength);
+		this.inputUIInterfaceValues = new Array<string>(this.inputUIInterfaceLength).fill("");
     }
 	
     onDecisionThreadLoaded(thread: BackendDecisionThread) : void {
@@ -124,13 +124,26 @@ export class ShowDecisionThreadComponent implements OnInit {
 	
         this.currentArticle = this.articleMap.get(this.currentNodeData.kbarticle);
     }
-	
+
+	commitThreadData() : void {
+		let uuid:string  = this.decisionThread.uuid;
+		
+		let theInput:Map<string,string> = new Map<string,string>();
+		for(let i=0;i<this.inputUIInterfaceLength;i++)	{
+			theInput.set(this.inputUIInterfaceItems[i].label  ,this.inputUIInterfaceValues[i] );
+		}
+		
+		this.backendThreadService.decideHITNodeOnDecisionThead(uuid, theInput).subscribe(
+			data=>{this.retrieveThread(data.uuid);},
+			error=>{},
+		)
+	}
 	
 	onRetryThread() : void {
 		let uuid:string  = this.decisionThread.uuid;
 		
 		this.backendThreadService.retryDecisionThread(uuid).subscribe(
-			data=>{this.onDecisionThreadRetried(data.uuid)},
+			data=>{this.retrieveThread(data.uuid)},
 			error=>{
 				// ignore
 			}
