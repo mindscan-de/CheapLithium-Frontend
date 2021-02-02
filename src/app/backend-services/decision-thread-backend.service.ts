@@ -20,6 +20,7 @@ export class DecisionThreadBackendService {
 	private _decisionThreadRetryLocation     = '/CheapLithium/rest/retryDecisionThread';
 	private _decisionThreadReportLocation    = '/CheapLithium/rest/getDecisionThreadReport/';
 	private _decisionThreadInputUILocation   = '/CheapLithium/rest/getDecisionThreadCurrentUserInterface';
+	private _decisionThreadHitDecideLocation = '/CheapLithium/rest/applyHumanDecisionOnDecisionThread';
 
 	constructor( private httpClient : HttpClient) { }
 
@@ -66,5 +67,14 @@ export class DecisionThreadBackendService {
 		formdata.append("uuid", uuid);
 		
 		return this.httpClient.post<any>(this._decisionThreadInputUILocation, formdata);
+	}
+	
+	decideHITNodeOnDecisionThead(uuid: string, inputdata:Map<String,Object>) : Observable<BackendThreadUUIDResult> {
+		let formdata = new FormData();
+		
+		formdata.append("uuid", uuid);
+		formdata.append("hitDecision", JSON.stringify(inputdata));
+		
+		return this.httpClient.post<BackendThreadUUIDResult>(this._decisionThreadHitDecideLocation, formdata);
 	}
 }
