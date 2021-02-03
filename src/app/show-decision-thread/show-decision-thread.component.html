@@ -89,7 +89,7 @@
 					</div>
 					
 					
-					<h4>The next possible states are</h4>
+					<h4 class="mt-3">The next possible states are</h4>
 					<ul class="list-group mt-1">
 						<li *ngFor="let decision of currentNodeData.nextactions" class="list-group-item">
 							<!-- TODO: shorten the guard / so to speak a short version of the guard before the first '{' -->
@@ -99,15 +99,14 @@
 					
 				</li>
 				
-				<li class="list-group-item">
+				<li *ngIf="decisionThread.currentstate=='WAITFORTRANSIT' or decisionThread.currentstate=='WAITFORCOMPUTE'" class="list-group-item">
 					<div class="container mt-2">
-						<!--  ONLY IF THREADSTATE IS "WAITINGFORTRANSIT" -->
-						<div class="btn-toolbar float-right" role="toolbar" >
+						<div  class="btn-toolbar float-right" role="toolbar" >
 							<div class="btn-group ml-2" role="group">
 								<button type="button" class="btn btn-danger" (click)="onRetryThread()" >retry / next / continue</button>
 							</div>
+						    <p>The Button will cause the node to be evaluated and that all transitions are tested again, the first to be found true, will succeed.</p>
 						</div>
-						The Button will cause the node to be evaluated and that all transitions are tested, the first to be found true, will succeed
 					</div>
 				</li>
 			</ul>
