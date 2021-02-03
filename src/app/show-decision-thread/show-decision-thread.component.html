@@ -76,14 +76,9 @@
 										<option value="yes">yes</option>								  		
 						  			</select>
 								</ng-container>
-								
 							</div>
-
- 							<ul>
-								<li>TODO: transfer form data and then continue the thread</li>
-							</ul>							
-														
 						</div>
+						
 						<div class="card-body">
 							<div class="btn-toolbar float-right" role="toolbar" >
 								<div class="btn-group ml-2" role="group">
@@ -106,6 +101,7 @@
 				
 				<li class="list-group-item">
 					<div class="container mt-2">
+						<!--  ONLY IF THREADSTATE IS "WAITINGFORTRANSIT" -->
 						<div class="btn-toolbar float-right" role="toolbar" >
 							<div class="btn-group ml-2" role="group">
 								<button type="button" class="btn btn-danger" (click)="onRetryThread()" >retry / next / continue</button>
