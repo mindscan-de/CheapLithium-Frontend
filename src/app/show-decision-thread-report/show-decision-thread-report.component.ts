@@ -17,6 +17,7 @@ export class ShowDecisionThreadReportComponent implements OnInit {
 	
 	public decisionThread: BackendDecisionThread = new BackendDecisionThread();
 	public decisionThreadReportItems: BackendDecisionThreadReportItem[] = [];
+	public decisionThreadReportSelection: boolean[] = [];
 	public combinedReport: string = "";
 
 	constructor(private activatedRoute : ActivatedRoute, private backendThreadService: DecisionThreadBackendService) { }
@@ -45,6 +46,7 @@ export class ShowDecisionThreadReportComponent implements OnInit {
 
 	onDecisionThreadReportLoaded ( report: BackendDecisionThreadReport ): void {
 		this.decisionThreadReportItems = report.reportitems;
+		this.decisionThreadReportSelection = new Array<boolean>(report.reportitems.length).fill(true); 
 	}
 	
 	onDecisionThreadReportFailed(error: any) : void {
@@ -55,5 +57,8 @@ export class ShowDecisionThreadReportComponent implements OnInit {
         console.log(error);
     }
 	
+	onUseSelected() : void {
+		console.log(this.decisionThreadReportSelection)
+	}
 	
 }
