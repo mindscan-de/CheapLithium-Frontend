@@ -57,8 +57,26 @@ export class ShowDecisionThreadReportComponent implements OnInit {
         console.log(error);
     }
 	
+	/* use the list and copy all together and show report in combined report area. */
 	onUseSelected() : void {
 		console.log(this.decisionThreadReportSelection)
+		
+		let newreport:string[] = [];
+		for(let i = 0;i<this.decisionThreadReportItems.length;i++) {
+			if(this.decisionThreadReportSelection[i]) {
+				/* Not very nice but good enough? */
+				if(i!=0) {
+					if(this.decisionThreadReportItems[i].nodereport.startsWith("h4. ")) {
+						newreport.push("\n\n");
+					}
+					if(this.decisionThreadReportItems[i].nodereport.startsWith("h5. ")) {
+						newreport.push("\n\n");
+					}
+				}
+				newreport.push(this.decisionThreadReportItems[i].nodereport);
+			}
+		}
+		this.combinedReport = newreport.join('');
 	}
 	
 }
