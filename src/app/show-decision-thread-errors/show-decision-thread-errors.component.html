@@ -27,4 +27,16 @@
 
 	<p>show-decision-thread-errors works!</p>
 
+
+	<div class="row">
+		<div class="col-lg mt-2">
+			<h3>Recent Errors</h3>
+			<!-- TODO AS DIV structure. -->
+			<div class="list-group">
+				<div *ngFor="let erroritem of decisionThreadErrorItems; let i = index" class="list-group-item" >
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
