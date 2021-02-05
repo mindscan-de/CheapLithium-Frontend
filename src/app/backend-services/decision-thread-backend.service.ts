@@ -6,7 +6,7 @@ import { BackendDecisionThread } from './backend-model/backend-decision-thread';
 import { BackendDecisionThreadIndex } from './backend-model/backend-decision-thread-index';
 import { BackendThreadUUIDResult } from './backend-model/backend-thread-uuidresult';
 import { BackendDecisionThreadReport } from './backend-model/backend-decision-thread-report';
-
+import { BackendDecisionThreadError } from './backend-model/backend-decision-thread-error';
 import { BackendDecisionThreadInputUI } from './backend-model/backend-decision-thread-input-ui';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class DecisionThreadBackendService {
 	private _decisionThreadStartLocation     = '/CheapLithium/rest/startDecisionThread';
 	private _decisionThreadRetryLocation     = '/CheapLithium/rest/retryDecisionThread';
 	private _decisionThreadReportLocation    = '/CheapLithium/rest/getDecisionThreadReport/';
+	private _decisionThreadErrorsLocation    = '/CheapLithium/rest/getDecisionThreadErrors/';
 	private _decisionThreadInputUILocation   = '/CheapLithium/rest/getDecisionThreadCurrentUserInterface';
 	private _decisionThreadHitDecideLocation = '/CheapLithium/rest/applyHumanDecisionOnDecisionThread';
 
@@ -60,6 +61,13 @@ export class DecisionThreadBackendService {
 		
 		return this.httpClient.get<BackendDecisionThreadReport>( this._decisionThreadReportLocation + uuid, {params:httpParameters});
 	}
+	
+	getDecisionThreadErrors( uuid:string ) : Observable<BackendDecisionThreadError> {
+		let httpParameters = new HttpParams();
+		
+		return this.httpClient.get<BackendDecisionThreadError>( this._decisionThreadErrorsLocation + uuid, {params:httpParameters});
+	}
+	
 	
 	getDecisionThreadInputUI( uuid:string ) : Observable<BackendDecisionThreadInputUI> {
 		let formdata = new FormData();
