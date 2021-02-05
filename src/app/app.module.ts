@@ -29,6 +29,7 @@ import { EditKBArticleDialogComponent } from './show-kb-article/edit-kbarticle-d
 import { CreateKBArticleDialogComponent } from './show-kb-article/create-kbarticle-dialog/create-kbarticle-dialog.component';
 import { ShowDecisionThreadReportComponent } from './show-decision-thread-report/show-decision-thread-report.component';
 import { EditDecisionModelStartDataDialogComponent } from './show-decision-model/edit-decision-model-start-data-dialog/edit-decision-model-start-data-dialog.component';
+import { ShowDecisionThreadErrorsComponent } from './show-decision-thread-errors/show-decision-thread-errors.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EditDecisionModelStartDataDialogComponent } from './show-decision-model
 	EditKBArticleDialogComponent,
 	CreateKBArticleDialogComponent,
 	ShowDecisionThreadReportComponent,
-	EditDecisionModelStartDataDialogComponent
+	EditDecisionModelStartDataDialogComponent,
+	ShowDecisionThreadErrorsComponent
   ],
   imports: [
     BrowserModule,
