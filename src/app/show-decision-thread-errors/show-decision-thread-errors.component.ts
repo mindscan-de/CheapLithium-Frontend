@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { BackendDecisionThread } from '../backend-services/backend-model/backend-decision-thread';
+
+import { ShowErrorItemDialogComponent } from './show-error-item-dialog/show-error-item-dialog.component'
 
 import { DecisionThreadBackendService } from '../backend-services/decision-thread-backend.service';
 import { BackendDecisionThreadError } from '../backend-services/backend-model/backend-decision-thread-error';
@@ -17,7 +21,7 @@ export class ShowDecisionThreadErrorsComponent implements OnInit {
 	public decisionThread: BackendDecisionThread = new BackendDecisionThread();
 	public decisionThreadErrorItems:BackendDecisionThreadErrorItem[] = [];
 
-    constructor(private activatedRoute : ActivatedRoute, private backendThreadService: DecisionThreadBackendService) { }
+    constructor(private activatedRoute : ActivatedRoute, private backendThreadService: DecisionThreadBackendService, private modalService: NgbModal) { }
 
 	ngOnInit(): void {
 		var threaduuid = this.activatedRoute.snapshot.params['uuid'];
@@ -57,6 +61,17 @@ export class ShowDecisionThreadErrorsComponent implements OnInit {
 
 	onShowErrorDetails(erroritem:BackendDecisionThreadErrorItem) : void {
 		// Als modaler dialog? für die details?
+		
+		const modalref = this.modalService.open(ShowErrorItemDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl' })
+		
+		modalref.componentInstance.setDialogData( erroritem );
+		
+		modalref.result.then(
+			(result)=> {
+				// something to do here? 
+			}, (reason)=> {
+				// something else was clicked...
+		});
 	}
 
 }
