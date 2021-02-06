@@ -30,10 +30,11 @@
 			<h3>Select Report items</h3>
 			<ul class="list-group">
 				<li *ngFor="let reportitem of decisionThreadReportItems; let i = index" class="list-group-item" >
-				<label class="list-group-item">
-					<input class="form-check-input me-1" type="checkbox" value="true" [(ngModel)]="decisionThreadReportSelection[i]">
-					<pre>{{reportitem.nodereport}}</pre>
-				</label>
+					<p>{{reportitem.timestamp*1000 | date: 'yyyy-MM-dd HH:mm:ss z'}}</p>
+					<label class="list-group-item">
+						<input class="form-check-input me-1" type="checkbox" value="true" [(ngModel)]="decisionThreadReportSelection[i]">
+						<pre>{{reportitem.nodereport}}</pre>
+					</label>
 				</li>
 			</ul>
 		</div>
