@@ -31,11 +31,12 @@
 	<div class="row">
 		<div class="col-lg mt-2">
 			<h3>Recent Errors</h3>
-			<!-- TODO AS DIV structure. -->
-			<div class="list-group">
-				<div *ngFor="let erroritem of decisionThreadErrorItems; let i = index" class="list-group-item" >
-				</div>
-			</div>
+			<ul class="list-group">
+				<li *ngFor="let erroritem of decisionThreadErrorItems; let i = index" class="list-group-item list-group-item-action" (click)="onShowErrorDetails(erroritem)">
+					<p>{{erroritem.timestamp}}</p>
+					<h5><span class="badge" [ngClass] = "{'badge-danger': erroritem.level==='error'}">{{erroritem.level}}</span>{{erroritem.message}}</h5>
+				</li>
+			</ul>
 		</div>
 	</div>
 
