@@ -7,7 +7,7 @@
 <div class="modal-body">
 	<div class="row">
 		<div class="col-lg mt-1">
-			<p>{{errorItem.data.dnname}} / {{errorItem.data.trname}}  @ {{errorItem.timestamp}}</p>
+			<p>{{errorItem.data.dnname}} / {{errorItem.data.trname}}  @ {{errorItem.timestamp*1000 | date: 'yyyy-MM-dd HH:mm:ss z'}}</p>
 			
 			<h5>Exception Message</h5>
 			<p>{{errorItem.data.exmessage}}</p>
